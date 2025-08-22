@@ -1,0 +1,43 @@
+﻿[
+  {
+    "Id": "order-1-uuid-1234",
+    "Client": {
+      "Id": "a1b2c3d4-e5f6-7890-1234-56789abcdef0",
+      "Name": "João Silva",
+      "CPF": "12345678901",
+      "Address": "Rua das Flores, 123 - Centro, Rio de Janeiro"
+    },
+    "Products": [
+      {
+        "Id": "prod-1-uuid-1111",
+        "Name": "Camiseta",
+        "Price": 49.90
+      },
+      {
+        "Id": "prod-2-uuid-2222",
+        "Name": "Calça Jeans",
+        "Price": 120.50
+      }
+    ],
+    "SaleDate": "2025-08-22T14:30:00",
+    "Address": "Rua das Flores, 123 - Centro, Rio de Janeiro"
+  },
+  {
+    "Id": "order-2-uuid-5678",
+    "Client": {
+      "Id": "b2c3d4e5-f6a7-8901-2345-6789abcdef01",
+      "Name": "Maria Oliveira",
+      "CPF": "98765432100",
+      "Address": "Av. Atlântica, 456 - Copacabana, Rio de Janeiro"
+    },
+    "Products": [
+      {
+        "Id": "prod-3-uuid-3333",
+        "Name": "Tênis",
+        "Price": 199.90
+      }
+    ],
+    "SaleDate": "2025-08-21T10:00:00",
+    "Address": "Av. Atlântica, 456 - Copacabana, Rio de Janeiro"
+  }
+]

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Wish ERP")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6068fec5d8c33ceaede799e7982f24d662a5f4e4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac71504790fed808797f9426661512974703e1bd")]
 [assembly: System.Reflection.AssemblyProductAttribute("Wish ERP")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Wish ERP")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

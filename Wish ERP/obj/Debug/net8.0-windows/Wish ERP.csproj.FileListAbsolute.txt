@@ -25,3 +25,7 @@ C:\Users\quase\source\repos\Wish ERP\Wish ERP\obj\Debug\net8.0-windows\Views\Ord
 C:\Users\quase\source\repos\Wish ERP\Wish ERP\obj\Debug\net8.0-windows\Views\ProductsView.g.cs
 C:\Users\quase\source\repos\Wish ERP\Wish ERP\obj\Debug\net8.0-windows\Views\OrderView.baml
 C:\Users\quase\source\repos\Wish ERP\Wish ERP\obj\Debug\net8.0-windows\Views\ProductsView.baml
+C:\Users\quase\source\repos\Wish ERP\Wish ERP\bin\Debug\net8.0-windows\Data\Clients.json
+C:\Users\quase\source\repos\Wish ERP\Wish ERP\bin\Debug\net8.0-windows\Data\Orders.json
+C:\Users\quase\source\repos\Wish ERP\Wish ERP\bin\Debug\net8.0-windows\Data\PaymentMethods.json
+C:\Users\quase\source\repos\Wish ERP\Wish ERP\bin\Debug\net8.0-windows\Data\Products.json

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections.ObjectModel;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -18,12 +19,25 @@ namespace Wish_ERP
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
             DataContext = new ViewModels.ClientsViewModel();
             ChangeCurrentPage(Views.OrderView.Instance);
+            _ = InitializeAsync();
         }
+        private async Task InitializeAsync()
+        {
+            Load();
+        }
+        private void Load()
+        {
+
+            textblock.TextWrapping = TextWrapping.Wrap;
+            textblock.Text = DataManager.Instance.Orders.FirstOrDefault().Id.ToString();
+        }
+
         private void OpenClientView(object sender, RoutedEventArgs e)
         {
             ChangeCurrentPage(CurrentPage.Content = Views.ClientsView.Instance);

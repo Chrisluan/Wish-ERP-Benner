@@ -20,10 +20,14 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="DreamWish" TextAlignment="Center" FontSize="20" Margin="5"/>
-                <Button Grid.Row="1" Content="Clients" Margin="5" Click="OpenClientView"/>
-                <Button Grid.Row="2" Content="Products" Margin="5" Click="OpenProductsView"/>
-                <Button Grid.Row="3" Content="Orders" Margin="5" Click="OpenOrdersView"/>
+                <TextBlock Text="DreamWish" TextAlignment="Center" FontSize="20" Margin="20"/>
+                <StackPanel Grid.Row="2">
+                    <Button Content="Clients" Margin="1" Click="OpenClientView"/>
+                    <Button Content="Products" Margin="1" Click="OpenProductsView"/>
+                    <Button Content="Orders" Margin="1" Click="OpenOrdersView"/>
+                    <TextBlock x:Name="textblock" Height="392"/>
+                </StackPanel>
+                
             </Grid>
 
             <!-- Content Component -->

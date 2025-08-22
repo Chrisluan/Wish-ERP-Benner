@@ -77,9 +77,9 @@ namespace Wish_ERP.ViewModels
         {
             try
             {
-                var path = "C:\\Users\\quase\\source\\repos\\Wish ERP\\Wish ERP\\Data\\clients.json";
-                List<Client> clients = await DataManager.FetchData<List<Client>>(path);
-                return clients;
+                var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "Clients.json");
+                Console.WriteLine(DataManager.Instance.Clients);
+                return DataManager.Instance.Clients;
             }
             catch (Exception ex)
             {
