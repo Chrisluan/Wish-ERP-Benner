@@ -28,10 +28,10 @@ namespace Wish.ERP.Benner.Services
             return _items.FirstOrDefault(predicate);
         }
 
-        public void Add(T item)
+        public void Add(T item, PathTo type)
         {
             _items.Add(item);
-            
+            DataProvider.Include(item, type);
         }
 
         public bool Update(Func<T, bool> predicate, T newValue)
@@ -83,9 +83,9 @@ namespace Wish.ERP.Benner.Services
         {
 
             var basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
-            Clients = new Repository<Client>(DataProvider.FetchData<List<Client>>(DataType.Client) ?? new List<Client>());
-            Products = new Repository<Product> (DataProvider.FetchData<List<Product>>(DataType.Product));
-            Orders = new Repository<Order>(DataProvider.FetchData<List<Order>>(DataType.Order));
+            Clients = new Repository<Client>(DataProvider.FetchData<List<Client>>(PathTo.Client) ?? new List<Client>());
+            Products = new Repository<Product> (DataProvider.FetchData<List<Product>>(PathTo.Product));
+            Orders = new Repository<Order>(DataProvider.FetchData<List<Order>>(PathTo.Order));
             Console.WriteLine(Clients == null ? "Clients é null" : $"Qtd clientes: {Clients.GetAll().Count}");
         }
 

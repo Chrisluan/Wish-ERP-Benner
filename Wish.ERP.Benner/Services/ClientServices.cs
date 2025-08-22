@@ -14,13 +14,13 @@ namespace Wish.ERP.Benner.Services
 
         public static void AddClient(Client client)
         {
-            DataManager.Instance.Clients.Add(client);
+            DataManager.Instance.Clients.Add(client, PathTo.Client);
             OnClientsChanged?.Invoke();
         }
         public static void Delete(string Id)
         {
             DataManager.Instance.Clients.Delete(x => x.Id == Id);
-            
+            DataProvider.DeleteById(PathTo.Client, Id);
             OnClientsChanged?.Invoke();
         }
         public static void EditClient()

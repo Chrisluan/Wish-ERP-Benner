@@ -11,7 +11,7 @@ using Wish.ERP.Benner.Models;
 
 namespace Wish.ERP.Benner.Services
 {
-    public enum DataType
+    public enum PathTo
     {
         Client,
         Product,
@@ -19,23 +19,23 @@ namespace Wish.ERP.Benner.Services
     }
     public class DataProvider
     {
-        private static string GetDataPath(DataType type)
+        private static string GetDataPath(PathTo type)
         {
             var basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
             switch(type)
             {
-                case DataType.Client:
+                case PathTo.Client:
                     return Path.Combine(basePath, "Clients.json");
-                case DataType.Order:
+                case PathTo.Order:
                     return Path.Combine(basePath, "Orders.json");
-                case DataType.Product:
+                case PathTo.Product:
                     return Path.Combine(basePath, "Products.json");
                 default:
                     throw new ArgumentException("Tipo de dado desconhecido", nameof(type));
             }
             ;
         }
-        public static T FetchData<T>(DataType expectedType)
+        public static T FetchData<T>(PathTo expectedType)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace Wish.ERP.Benner.Services
             }
 
         }
-        public static bool ModifyFieldById(DataType expectedType, string id, string field, object newValue)
+        public static bool ModifyFieldById(PathTo expectedType, string id, string field, object newValue)
         {
             var path = GetDataPath(expectedType);
             var jsonFile = File.ReadAllText(path);
@@ -77,7 +77,7 @@ namespace Wish.ERP.Benner.Services
                 return false;
             }
         }
-        public static bool Include<T>(T item, DataType expectedType)
+        public static bool Include<T>(T item, PathTo expectedType)
         {
             var path = GetDataPath(expectedType);
             try
@@ -91,6 +91,32 @@ namespace Wish.ERP.Benner.Services
             catch (Exception ex)
             {
                 Console.WriteLine($"Error including item: {ex.Message}");
+                return false;
+            }
+        }
+        public static bool DeleteById(PathTo expectedType, string id)
+        {
+            var path = GetDataPath(expectedType);
+            try
+            {
+                var jsonFile = File.ReadAllText(path);
+                var data = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(jsonFile) ?? new List<Dictionary<string, object>>();
+                var itemToRemove = data.FirstOrDefault(d => d["Id"].ToString().ToLower().Equals(id.ToLower()));
+                if (itemToRemove != null)
+                {
+                    data.Remove(itemToRemove);
+                    File.WriteAllText(path, JsonConvert.SerializeObject(data, Formatting.Indented), Encoding.UTF8);
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine($"Item com o Id '{id}' não encontrado");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error deleting item: {ex.Message}");
                 return false;
             }
         }

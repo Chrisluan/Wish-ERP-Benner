@@ -42,7 +42,7 @@ namespace Wish_ERP.Views
         {
             if (ClientsList.SelectedItem is Client selectedClient)
             {
-                ClientServices.Delete(selectedClient.Id);
+                ClientServices.AddClient(selectedClient);
             }
         }
     }
