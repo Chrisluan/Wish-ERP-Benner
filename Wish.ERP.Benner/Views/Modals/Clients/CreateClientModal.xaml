@@ -1,0 +1,51 @@
+﻿<Window x:Class="Wish.ERP.Benner.Views.Modals.Clients.CreateClientModal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wish.ERP.Benner.Views.Modals.Clients"
+        
+        mc:Ignorable="d"
+        Title="Incluir novo cliente" Height="250" Width="400"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ShowInTaskbar="False"
+        Background="Transparent"
+        AllowsTransparency="True"
+        >
+
+    <Grid>
+        <Border Background="White" CornerRadius="10" Padding="20"
+        BorderBrush="Gray" >
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="326">
+                <TextBlock Margin="0,0,0,30" FontSize="20" FontWeight="Bold" TextAlignment="Center">
+                    <TextBlock.Text>
+                        Criar Cliente
+                    </TextBlock.Text>
+                </TextBlock>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Margin="0,0, 4,0">
+                        <TextBlock>Nome</TextBlock>
+                        <TextBox x:Name="NameBox" Padding="3"></TextBox>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <TextBlock>CPF</TextBlock>
+                        <TextBox x:Name="CPFBox" Padding="3"></TextBox>
+                    </StackPanel>
+                </Grid>
+
+                <StackPanel>
+                    <TextBlock>Endereço</TextBlock>
+                    <TextBox x:Name="AddresBox" Padding="3"></TextBox>
+                </StackPanel>
+                <Button Padding="3" Margin="0,5,0,0" Content="Pronto" Click="Button_Click"></Button>
+                <Button Padding="3" Margin="0,5,0,0" Content="Cancelar"></Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

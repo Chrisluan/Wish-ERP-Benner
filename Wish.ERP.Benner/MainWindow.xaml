@@ -37,19 +37,15 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <!-- Current Page Component -->
-                <Grid Grid.Row="0" Background="#c2c2c2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" x:Name="ActionBar" Text="DreamWish ERP" FontSize="24" FontWeight="Bold" Margin="10"/>
-
+                <Grid Grid.Row="0" Background="#D2D3D5" >
+                    <TextBlock HorizontalAlignment="Left" Grid.Column="0" x:Name="ActionBar" Text="DreamWish ERP" FontSize="24" FontWeight="Bold" Margin="10"/>
                 </Grid>
                 
                 <!-- Content Component -->
-                <Grid Margin="5" Grid.Row="1" Background="#BDBFC1">
-                    <ContentControl Tag="" x:Name="CurrentPage"/>
-                </Grid>
+                <Border Padding="5" Background="#BDBFC1" CornerRadius="5" Margin="5" Grid.Row="1">
+                    <ContentControl x:Name="CurrentPage"/>
+                </Border>
+
             </Grid>
             
         </Grid>

@@ -69,8 +69,11 @@
     <Compile Include="Views\Components\ClientCard.xaml.cs">
       <DependentUpon>ClientCard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Modals\ClientOverview.xaml.cs">
-      <DependentUpon>ClientOverview.xaml</DependentUpon>
+    <Compile Include="Views\Modals\Clients\CreateClientModal.xaml.cs">
+      <DependentUpon>CreateClientModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modals\Clients\EditClientModal.xaml.cs">
+      <DependentUpon>EditClientModal.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\OrderView.xaml.cs">
       <DependentUpon>OrderView.xaml</DependentUpon>
@@ -98,7 +101,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Modals\ClientOverview.xaml">
+    <Page Include="Views\Modals\Clients\CreateClientModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Modals\Clients\EditClientModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

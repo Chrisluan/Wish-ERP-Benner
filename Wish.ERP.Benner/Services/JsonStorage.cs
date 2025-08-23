@@ -39,6 +39,10 @@ namespace Wish.ERP.Benner.Services
             try
             {
                 var path = GetDataPath(expectedType);
+                if(!File.Exists(path))
+                {
+                    File.WriteAllText(path, "[]", Encoding.UTF8);
+                }
                 string jsonFile = File.ReadAllText(path);
                 var data = JsonConvert.DeserializeObject<T>(jsonFile);
                 return data;
@@ -66,10 +70,10 @@ namespace Wish.ERP.Benner.Services
             var newValues = JsonConvert.DeserializeObject<Dictionary<string, object>>(
                 JsonConvert.SerializeObject(newValue)
             );
-            foreach (var kv in newValues)
+            foreach (var _item in newValues)
             {
-                if (kv.Key == "Id") continue;
-                item[kv.Key] = kv.Value;
+                if (_item.Key == "Id") continue;
+                item[_item.Key] = _item.Value;
             }
 
             File.WriteAllText(path, JsonConvert.SerializeObject(data, Formatting.Indented), Encoding.UTF8);

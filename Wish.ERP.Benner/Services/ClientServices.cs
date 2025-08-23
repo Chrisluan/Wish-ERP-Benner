@@ -22,6 +22,14 @@ namespace Wish.ERP.Benner.Services
             DataManager.Instance.Clients.DeleteById(Id, PathTo.Client);
             OnClientsChanged?.Invoke();
         }
+        public static void DeleteMany(List<string> Ids)
+        {
+            foreach (var id in Ids)
+            {
+                DataManager.Instance.Clients.DeleteById(id, PathTo.Client);
+            }
+            OnClientsChanged?.Invoke();
+        }
         public static void UpdateClient(Client client, Client newValue)
         {
             DataManager.Instance.Clients.UpdateById(client.Id, newValue, PathTo.Client);

@@ -11,18 +11,31 @@
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <!-- Campos de input -->
             <RowDefinition Height="*"/>
-            <!-- Lista ocupando espaço restante -->
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0">
-            <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox Text="{Binding NameSetter, UpdateSourceTrigger=PropertyChanged}"/>
-            <Button Content="Adicionar cliente padrão" Click="AddClient"/>
-        </StackPanel>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.2*" MaxWidth="400"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <ListView Background="Transparent" Grid.Row="1" Name="ClientsList" MouseDoubleClick="OpenClient" ItemsSource="{Binding FilteredClientList}">
+            <DockPanel LastChildFill="True">
+                <Button Padding="5" Margin="10,0,0,0" Content="Pesquisar" Click="AddClient" DockPanel.Dock="Right"/>
+                <TextBox Padding="5" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
+            </DockPanel>
+
+            <DockPanel Grid.Column="1" LastChildFill="True" HorizontalAlignment="Right">
+                <Button Padding="5" IsEnabled="False" Click="DeleteClient" x:Name="DeleteClientButton" Content="Deletar"  Margin="10,0,0,0"/>
+
+                <Button Padding="5" IsEnabled="True" Click="CreateClient" Margin="10,0,0,0" Content="Novo" DockPanel.Dock="Right"/>
+
+            </DockPanel>
+
+        </Grid>
+           
+
+        <ListView Margin="0,5,0,0" SelectionMode="Extended" SelectionChanged="HandleSelectionList" Background="Transparent" Grid.Row="1" Name="ClientsList" MouseDoubleClick="OpenClient" ItemsSource="{Binding FilteredClientList}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="50"/>

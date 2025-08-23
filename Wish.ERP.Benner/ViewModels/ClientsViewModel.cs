@@ -9,15 +9,19 @@ using System.ComponentModel;
 using System.Windows.Data;
 using Wish.ERP.Benner.Models;
 using Wish.ERP.Benner.Services;
+using System.Windows;
 namespace Wish_ERP.ViewModels
 {
     public class ClientsViewModel : INotifyPropertyChanged
     {
+
+
+
         private List<Client> ClientList
         {
             get; set;
         }
-
+        
 
         private ObservableCollection<Client> _filteredClientList;
         public ObservableCollection<Client> FilteredClientList
