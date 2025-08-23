@@ -3,25 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Wish_ERP.Views" xmlns:view="clr-namespace:Wish_ERP.Views.Components"
+             xmlns:local="clr-namespace:Wish_ERP.Views"
+             xmlns:view="clr-namespace:Wish_ERP.Views.Components"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="LightBlue">
+
+    <Grid Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <!-- Campos de input -->
             <RowDefinition Height="*"/>
+            <!-- Lista ocupando espaço restante -->
         </Grid.RowDefinitions>
-        <StackPanel>
-            <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-            <ListView Name="ClientsList" MouseDoubleClick="OpenClient" ItemsSource="{Binding FilteredClientList}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <view:ClientCard/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
 
+        <StackPanel Grid.Row="0">
+            <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Text="{Binding NameSetter, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Content="Adicionar cliente padrão" Click="AddClient"/>
         </StackPanel>
 
+        <ListView Background="Transparent" Grid.Row="1" Name="ClientsList" MouseDoubleClick="OpenClient" ItemsSource="{Binding FilteredClientList}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="50"/>
+                    <GridViewColumn Header="CPF" DisplayMemberBinding="{Binding CPF}" Width="200"/>
+                    <GridViewColumn Header="Nome" DisplayMemberBinding="{Binding Name}" Width="200"/>
+                    <GridViewColumn Header="Endereço" DisplayMemberBinding="{Binding Address}" Width="200"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
+
 </UserControl>

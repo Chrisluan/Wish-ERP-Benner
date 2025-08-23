@@ -9,7 +9,7 @@ using Wish.ERP.Benner.Models;
 
 namespace Wish.ERP.Benner.Services
 {
-    public class Repository<T> where T : class
+    public class Repository<T>
     {
         private List<T> _items;
 
@@ -31,24 +31,50 @@ namespace Wish.ERP.Benner.Services
         public void Add(T item, PathTo type)
         {
             _items.Add(item);
-            DataProvider.Include(item, type);
+            JsonStorage.Include(item, type);
         }
 
-        public bool Update(Func<T, bool> predicate, T newValue)
+        public bool UpdateById(string id, T newValue, PathTo type)
         {
-            var index = _items.FindIndex(x => predicate(x));
-            if (index == -1) return false;
+            var obj = _items.FirstOrDefault(_obj =>
+            {
+                var prop = _obj.GetType().GetProperty("Id");
+                if (prop == null) return false;
+                string value = prop.GetValue(_obj)?.ToString();
+                return value == id;
+            });
 
-            _items[index] = newValue;
+            if (obj == null) return false;
+
+            var props = typeof(T).GetProperties();
+            foreach (var prop in props)
+            {
+                if (prop.Name == "Id") continue;
+
+                var newVal = prop.GetValue(newValue);
+                prop.SetValue(obj, newVal);
+            }
+
+            var idValue = typeof(T).GetProperty("Id")?.GetValue(obj);
+            JsonStorage.ModifyFieldById(type, id, newValue);
+
             return true;
         }
 
-        public bool Delete(Func<T, bool> predicate)
-        {
-            var item = _items.FirstOrDefault(predicate);
-            if (item == null) return false;
 
-            _items.Remove(item);
+        public bool DeleteById(string Id, PathTo type)
+        {
+            var obj = _items.FirstOrDefault(_obj => {
+                var prop = _obj.GetType().GetProperty("Id");
+                if (prop == null) return false;
+                string value = prop.GetValue(_obj)?.ToString();
+                return value == Id;
+            });
+
+            if (obj == null) return false;
+
+            JsonStorage.DeleteById(type, Id);
+            _items.Remove(obj);
             return true;
         }
     }
@@ -75,18 +101,15 @@ namespace Wish.ERP.Benner.Services
         }
         public DataManager() {
             InitializeFetch();
-            Console.WriteLine("DataManager initialized.");
-            
         }
 
         private void InitializeFetch()
         {
 
             var basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
-            Clients = new Repository<Client>(DataProvider.FetchData<List<Client>>(PathTo.Client) ?? new List<Client>());
-            Products = new Repository<Product> (DataProvider.FetchData<List<Product>>(PathTo.Product));
-            Orders = new Repository<Order>(DataProvider.FetchData<List<Order>>(PathTo.Order));
-            Console.WriteLine(Clients == null ? "Clients é null" : $"Qtd clientes: {Clients.GetAll().Count}");
+            Clients = new Repository<Client>(JsonStorage.FetchData<List<Client>>(PathTo.Client) ?? new List<Client>());
+            Products = new Repository<Product> (JsonStorage.FetchData<List<Product>>(PathTo.Product));
+            Orders = new Repository<Order>(JsonStorage.FetchData<List<Order>>(PathTo.Order));
         }
 
     }

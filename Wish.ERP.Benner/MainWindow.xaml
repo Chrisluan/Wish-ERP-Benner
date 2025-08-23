@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="621" Width="902" MinWidth="900" MinHeight="600">
 
-    <Border Padding="5">
+    <Border Padding="10">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -11,7 +11,7 @@
             </Grid.ColumnDefinitions>
 
             <!-- Navigator -->
-            <Grid Grid.Column="0">
+            <Grid Grid.Column="0" Background="#E6E7E8">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -21,19 +21,37 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="DreamWish" TextAlignment="Center" FontSize="20" Margin="20"/>
-                <StackPanel Grid.Row="2">
+                <StackPanel Grid.Row="2" Margin="0,0,5,0">
                     <Button Content="Clients" Margin="1" Click="OpenClientView"/>
                     <Button Content="Products" Margin="1" Click="OpenProductsView"/>
                     <Button Content="Orders" Margin="1" Click="OpenOrdersView"/>
-                    <TextBlock x:Name="textblock" Height="392"/>
+                   
                 </StackPanel>
                 
             </Grid>
 
-            <!-- Content Component -->
+            
             <Grid Grid.Column="1">
-                <ContentControl x:Name="CurrentPage"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!-- Current Page Component -->
+                <Grid Grid.Row="0" Background="#c2c2c2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Name="ActionBar" Text="DreamWish ERP" FontSize="24" FontWeight="Bold" Margin="10"/>
+
+                </Grid>
+                
+                <!-- Content Component -->
+                <Grid Margin="5" Grid.Row="1" Background="#BDBFC1">
+                    <ContentControl Tag="" x:Name="CurrentPage"/>
+                </Grid>
             </Grid>
+            
         </Grid>
     </Border>
 </Window>

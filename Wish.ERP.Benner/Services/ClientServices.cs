@@ -19,14 +19,13 @@ namespace Wish.ERP.Benner.Services
         }
         public static void Delete(string Id)
         {
-            DataManager.Instance.Clients.Delete(x => x.Id == Id);
-            DataProvider.DeleteById(PathTo.Client, Id);
+            DataManager.Instance.Clients.DeleteById(Id, PathTo.Client);
             OnClientsChanged?.Invoke();
         }
-        public static void EditClient()
+        public static void UpdateClient(Client client, Client newValue)
         {
-
+            DataManager.Instance.Clients.UpdateById(client.Id, newValue, PathTo.Client);
             OnClientsChanged?.Invoke();
-        }
+        } 
     }
 }

@@ -51,6 +51,7 @@ namespace Wish_ERP.ViewModels
         public void UpdateClientList()
         {
             ClientList = DataManager.Instance.Clients.GetAll();
+            ClientList.Reverse();
             FilteredClientList = new ObservableCollection<Client>(ClientList);
 
             ClientServices.OnClientsChanged += UpdateClientList;

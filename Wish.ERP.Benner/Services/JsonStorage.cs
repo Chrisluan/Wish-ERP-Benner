@@ -1,13 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-
 using System.IO;
 using System.Linq;
-
 using System.Text;
-using System.Threading.Tasks;
-using Wish.ERP.Benner.Models;
 
 namespace Wish.ERP.Benner.Services
 {
@@ -15,14 +11,15 @@ namespace Wish.ERP.Benner.Services
     {
         Client,
         Product,
-        Order
+        Order,
+        PaymentMethods
     }
-    public class DataProvider
+    public class JsonStorage
     {
         private static string GetDataPath(PathTo type)
         {
             var basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
-            switch(type)
+            switch (type)
             {
                 case PathTo.Client:
                     return Path.Combine(basePath, "Clients.json");
@@ -30,6 +27,8 @@ namespace Wish.ERP.Benner.Services
                     return Path.Combine(basePath, "Orders.json");
                 case PathTo.Product:
                     return Path.Combine(basePath, "Products.json");
+                case PathTo.PaymentMethods:
+                    return Path.Combine(basePath, "PaymentMethods.json");
                 default:
                     throw new ArgumentException("Tipo de dado desconhecido", nameof(type));
             }
@@ -39,7 +38,7 @@ namespace Wish.ERP.Benner.Services
         {
             try
             {
-                var path= GetDataPath(expectedType);
+                var path = GetDataPath(expectedType);
                 string jsonFile = File.ReadAllText(path);
                 var data = JsonConvert.DeserializeObject<T>(jsonFile);
                 return data;
@@ -51,32 +50,33 @@ namespace Wish.ERP.Benner.Services
             }
 
         }
-        public static bool ModifyFieldById(PathTo expectedType, string id, string field, object newValue)
+        public static bool ModifyFieldById(PathTo expectedType, string id, object newValue)
         {
             var path = GetDataPath(expectedType);
             var jsonFile = File.ReadAllText(path);
 
-            var data = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(jsonFile);
+            var data = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(jsonFile)
+                       ?? new List<Dictionary<string, object>>();
 
-            var item = data.FirstOrDefault(d => d["Id"].ToString().ToLower().Equals(id.ToLower()));
-            if (item.ContainsKey(field))
-            {
-                if (field == "Id")
-                    throw new Exception("Não é possível editar o campo ID");
+            var item = data.FirstOrDefault(d => d.ContainsKey("Id") && d["Id"].ToString().Equals(id, StringComparison.OrdinalIgnoreCase));
 
-                item[field] = newValue;
-
-                File.WriteAllText(path, JsonConvert.SerializeObject(data, Formatting.Indented), Encoding.UTF8);
-
-                Console.WriteLine($"Field '{field}' of item with ID '{id}' has been updated to '{newValue}'.");
-                return true;
-            }
-            else
-            {
-                Console.WriteLine($"Item com o Id '{id}' não encontrado ou campo inexistente");
+            if (item == null)
                 return false;
+
+            var newValues = JsonConvert.DeserializeObject<Dictionary<string, object>>(
+                JsonConvert.SerializeObject(newValue)
+            );
+            foreach (var kv in newValues)
+            {
+                if (kv.Key == "Id") continue;
+                item[kv.Key] = kv.Value;
             }
+
+            File.WriteAllText(path, JsonConvert.SerializeObject(data, Formatting.Indented), Encoding.UTF8);
+
+            return true;
         }
+
         public static bool Include<T>(T item, PathTo expectedType)
         {
             var path = GetDataPath(expectedType);
@@ -120,6 +120,7 @@ namespace Wish.ERP.Benner.Services
                 return false;
             }
         }
+
 
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,7 +19,13 @@ namespace Wish_ERP
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        private readonly Dictionary<Type, string> pageNames = new Dictionary<Type, string>
+        {
+            { typeof(Views.OrderView), "Serviços" },
+            { typeof(Views.ClientsView), "Clientes" },
+            { typeof(Views.ProductsView), "Produtos" }
+        };
+
         public MainWindow()
         {
             InitializeComponent();
@@ -28,7 +36,7 @@ namespace Wish_ERP
 
         private void OpenClientView(object sender, RoutedEventArgs e)
         {
-            ChangeCurrentPage(CurrentPage.Content = Views.ClientsView.Instance);
+            ChangeCurrentPage(Views.ClientsView.Instance);
         }
         private void OpenProductsView(object sender, RoutedEventArgs e)
         {
@@ -42,9 +50,10 @@ namespace Wish_ERP
 
         private void ChangeCurrentPage(object Page)
         {
-            if (CurrentPage.Content == Page)return;
-            
+            if (CurrentPage.Content == Page) return;
             CurrentPage.Content = Page;
+
+            ActionBar.Text = pageNames[Page.GetType()];
         }
 
     }

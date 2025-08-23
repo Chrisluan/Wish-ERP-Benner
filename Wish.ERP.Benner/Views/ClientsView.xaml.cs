@@ -20,6 +20,13 @@ namespace Wish_ERP.Views
 {
     public partial class ClientsView : UserControl
     {
+        private static string _NameSetter = string.Empty;
+
+        public string NameSetter
+        {
+            get { return _NameSetter; }
+            set { _NameSetter = value; }
+        }
         private static ClientsView instance = null;
 
         public static ClientsView Instance
@@ -38,11 +45,18 @@ namespace Wish_ERP.Views
             InitializeComponent();
         }
 
+        private void AddClient(object sender, RoutedEventArgs e)
+        {
+            Client newClient = new Client("", "", "");
+        }
         private void OpenClient(object sender, MouseButtonEventArgs e)
         {
             if (ClientsList.SelectedItem is Client selectedClient)
             {
-                ClientServices.AddClient(selectedClient);
+                Client client = selectedClient;
+
+                client.Name = "Updated Name";
+                ClientServices.UpdateClient(selectedClient, client);
             }
         }
     }
