@@ -46,12 +46,6 @@ namespace Wish_ERP.Views
             InitializeComponent();
             DataContext = new ClientsViewModel();
         }
-
-        private void AddClient(object sender, RoutedEventArgs e)
-        {
-            Client newClient = new Client("", "", "");
-
-        }
         private void DeleteClient(object sender, RoutedEventArgs e)
         {
             var selectedClients = ClientsList.SelectedItems.Cast<Client>().ToList();
@@ -76,7 +70,7 @@ namespace Wish_ERP.Views
             selectedClients = ClientsList.SelectedItems.Cast<Client>().ToList();
             DeleteClientButton.IsEnabled = selectedClients.Any();
             EditClientButton.IsEnabled = selectedClients.Count == 1;
-            SelectedClientViewer.Content = new ClientOrdersViewer(selectedClients.Count == 1 ? selectedClients.FirstOrDefault() : new Client("", "", ""));
+            SelectedClientViewer.Content = new ClientOrdersViewer(selectedClients.Count == 1 ? selectedClients.FirstOrDefault() : null);
         }
 
         private void CreateClient(object sender, RoutedEventArgs e)

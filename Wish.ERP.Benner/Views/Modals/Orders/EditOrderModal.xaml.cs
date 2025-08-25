@@ -16,20 +16,12 @@ using Wish.ERP.Benner.Services;
 
 namespace Wish.ERP.Benner.Views.Modals.Orders
 {
-    /// <summary>
-    /// Lógica interna para ClientOverview.xaml
-    /// </summary>
+
     public partial class EditOrderModal : Window
     {
-
-        private Order editingOrder;
         public EditOrderModal(Order order)
         {
             InitializeComponent();
-           // editingClient = order;
-           // NameBox.Text = editingClient.Name;
-           // CPFBox.Text = editingClient.CPF;
-           // AddresBox.Text = editingClient.Address;
 
             var mainw = Application.Current.MainWindow;
 
@@ -50,8 +42,13 @@ namespace Wish.ERP.Benner.Views.Modals.Orders
 
 
 
-            Client client = new Client(fields["name"].Text, fields["CPF"].Text, fields["address"].Text);
-
+            Client client = new Client()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = fields["name"].Text,
+                CPF = fields["CPF"].Text,
+                Address = fields["address"].Text ?? ""
+            };
 
             //ClientServices.UpdateClient(editingClient.Id, client);
             this.Close();

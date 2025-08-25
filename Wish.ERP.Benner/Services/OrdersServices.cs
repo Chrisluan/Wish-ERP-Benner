@@ -30,10 +30,11 @@ namespace Wish.ERP.Benner.Services
             DataManager.Instance.Orders.DeleteById(Id, PathTo.Order);
             OnOrdersChanged?.Invoke();
         }
-        public static void UpdateClient(string orderId, Order newValue)
+        public static bool UpdateOrder(string orderId, Order newValue)
         {
-            DataManager.Instance.Orders.UpdateById(orderId, newValue, PathTo.Client);
+            var stat = DataManager.Instance.Orders.UpdateById(orderId, newValue, PathTo.Order);
             OnOrdersChanged?.Invoke();
+            return stat;
         } 
     }
 }

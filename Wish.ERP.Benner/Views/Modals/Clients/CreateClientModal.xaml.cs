@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Wish.ERP.Benner.Models;
 using Wish.ERP.Benner.Services;
+using Wish.ERP.Benner.Utils;
 
 namespace Wish.ERP.Benner.Views.Modals.Clients
 {
@@ -63,7 +64,13 @@ namespace Wish.ERP.Benner.Views.Modals.Clients
                 MessageBox.Show("CPF INVÁLIDO", "Validação", MessageBoxButton.OK, MessageBoxImage.Stop);
                 return;
             }
-            Client client = new Client(fields["name"].Text, fields["CPF"].Text, fields["address"].Text ?? "");
+            Client client = new Client()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = fields["name"].Text,
+                CPF = fields["CPF"].Text,
+                Address = fields["address"].Text ?? ""
+            };
             ClientServices.AddClient(client);
             this.Close();
 

@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace Wish.ERP.Benner.Services
+namespace Wish.ERP.Benner.Utils
 {
     public static class Validator
     {

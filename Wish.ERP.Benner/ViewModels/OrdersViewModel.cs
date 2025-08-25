@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using Wish.ERP.Benner.Models;
 using Wish.ERP.Benner.Services;
 
@@ -13,7 +14,20 @@ namespace Wish.ERP.Benner.ViewModels
 {
     public class OrdersViewModel : INotifyPropertyChanged
     {
+        public ICommand SetStatusCommand { get; }
         public event PropertyChangedEventHandler PropertyChanged;
+        private List<Order> selectedOrders;
+        
+
+        public List<Order> SelectedOrders
+        {
+            get => selectedOrders;
+            set {
+                if (selectedOrders != value)
+                    selectedOrders = value;
+                OnPropertyChanged(nameof(SelectedOrders));
+            }
+        }
 
         private List<Order> orders;
 
@@ -67,9 +81,9 @@ namespace Wish.ERP.Benner.ViewModels
         public OrdersViewModel()
         {
             filtered_orders = new ObservableCollection<Order>();
+            
             UpdateOrdersList();
         }
-
         public void UpdateOrdersList()
         {
             orders = DataManager.Instance.Orders.GetAll();
@@ -85,14 +99,11 @@ namespace Wish.ERP.Benner.ViewModels
 
             if (!string.IsNullOrWhiteSpace(SearchText))
             {
-                string lowerSearch = SearchText.ToLower();
-
                 filtered = filtered.Where(n =>
-                    (n.ProductsNames?.ToString().ToLower().Contains(lowerSearch) ?? false)
-                    || (n.OrderBoxes?.Any(e => e.Product?.Name?.ToLower().Contains(lowerSearch) ?? false) ?? false)
+                    n.ProductsNames.ToString().Contains(SearchText.ToLower())
+                    || n.OrderBoxes.Any(e => e.Product.Name.ToLower().Contains(SearchText.ToLower()))
                 );
             }
-
 
             if (FilterMinValue.HasValue && FilterMinValue.Value != 0)
                 filtered = filtered.Where(n => n.TotalOrderPrice >= (double)FilterMinValue.Value);

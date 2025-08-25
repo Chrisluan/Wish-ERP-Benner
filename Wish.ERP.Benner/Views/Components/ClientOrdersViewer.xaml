@@ -14,14 +14,12 @@
     <Grid Background="#c2c2c2">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
-            <!-- altura maior para colocar filtros + botão -->
+           
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Linha de filtros e botão -->
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5">
 
-            <!-- Filtros -->
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <RadioButton Content="Todos" Margin="5,0"
                              IsChecked="{Binding StatusSelecionado, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=All}" />
@@ -35,11 +33,9 @@
                              IsChecked="{Binding StatusSelecionado, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Sent}" />
             </StackPanel>
 
-            <!-- Botão criar pedido -->
             <Button Click="CreateNewOrder" Padding="5" Content="Criar novo Pedido" Width="150" Margin="10,0,0,0"/>
         </StackPanel>
 
-        <!-- ListView dos pedidos -->
         <ListView Grid.Row="1"
                   Background="Transparent"
                   ItemsSource="{Binding CurrentSelectedClientOrders}">

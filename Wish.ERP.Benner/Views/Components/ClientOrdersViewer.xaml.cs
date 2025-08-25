@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Wish.ERP.Benner.Models;
 using Wish.ERP.Benner.Services;
+using Wish.ERP.Benner.ViewModels;
 using Wish.ERP.Benner.Views.Modals.Orders;
 
 namespace Wish.ERP.Benner.Views.Components
@@ -21,22 +22,13 @@ namespace Wish.ERP.Benner.Views.Components
             InitializeComponent();
             Client = selectedClient;
             CurrentSelectedClientOrders = new ObservableCollection<Order>(DataManager.Instance.Orders.GetAll(o => o.ClientId == Client.Id));
-            this.DataContext = this;
-
-
+            this.DataContext = new OrdersViewModel();
         }
 
         public void CreateNewOrder(object sender, System.Windows.RoutedEventArgs e)
         {
             CreateOrderModal createOrderModal = new CreateOrderModal(Client);
-
-
             createOrderModal.ShowDialog();
-
-
-            CurrentSelectedClientOrders.OrderByDescending(c => c.SaleDate).Append(createOrderModal.CreatedOrder);
-
-
         }
     }
 }

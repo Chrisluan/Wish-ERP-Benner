@@ -58,13 +58,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Interfaces\EnumToBooleanConverter.cs" />
+    <Compile Include="Utils\EnumToBooleanConverter.cs" />
+    <Compile Include="Utils\RelayCommand.cs" />
     <Compile Include="Models\OrderBox.cs" />
     <Compile Include="Services\OrdersServices.cs" />
     <Compile Include="Services\ClientServices.cs" />
     <Compile Include="Services\DataManager.cs" />
     <Compile Include="Services\JsonStorage.cs" />
-    <Compile Include="Services\Validator.cs" />
+    <Compile Include="Utils\Validator.cs" />
     <Compile Include="ViewModels\ClientsViewModel.cs" />
     <Compile Include="ViewModels\OrderFilterTypeViewModel.cs" />
     <Compile Include="ViewModels\OrdersViewModel.cs" />
@@ -187,5 +188,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

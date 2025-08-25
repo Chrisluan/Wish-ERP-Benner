@@ -21,7 +21,7 @@
             </Grid.ColumnDefinitions>
 
             <DockPanel LastChildFill="True">
-                <Button Padding="5" Margin="10,0,0,0" Content="Pesquisar" Click="AddClient" DockPanel.Dock="Right"/>
+                <Button Padding="5" Margin="10,0,0,0" Content="Pesquisar" DockPanel.Dock="Right"/>
                 <TextBox Padding="5" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
             </DockPanel>
 

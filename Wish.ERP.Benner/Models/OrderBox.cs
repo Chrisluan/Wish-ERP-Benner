@@ -14,11 +14,8 @@ namespace Wish.ERP.Benner.Models
 
         public double Balance => Product.Price * Amount;
        
-        public string ProductName => Product.Name;
+        public string ProductName => string.Join(" ,", $"({Amount}x) {Product.Name}") ;
         public double ProductPrice => Product.Price;
 
-        public OrderBox() {
-            this.Id = Guid.NewGuid().ToString();
-        }
     }
 }

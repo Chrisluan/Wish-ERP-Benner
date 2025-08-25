@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,7 +15,8 @@ namespace Wish.ERP.Benner.Services
         Order,
         PaymentMethods
     }
-    public class JsonStorage
+
+    public static class JsonStorage
     {
         private static string GetDataPath(PathTo type)
         {
@@ -23,73 +25,43 @@ namespace Wish.ERP.Benner.Services
             {
                 case PathTo.Client:
                     return Path.Combine(basePath, "Clients.json");
-                case PathTo.Order:
-                    return Path.Combine(basePath, "Orders.json");
                 case PathTo.Product:
                     return Path.Combine(basePath, "Products.json");
+                case PathTo.Order:
+                    return Path.Combine(basePath, "Orders.json");
                 case PathTo.PaymentMethods:
                     return Path.Combine(basePath, "PaymentMethods.json");
                 default:
                     throw new ArgumentException("Tipo de dado desconhecido", nameof(type));
             }
-            ;
         }
-        public static T FetchData<T>(PathTo expectedType)
+
+        public static T FetchData<T>(PathTo type)
         {
             try
             {
-                var path = GetDataPath(expectedType);
-                if(!File.Exists(path))
-                {
-                    File.WriteAllText(path, "[]", Encoding.UTF8);
-                }
-                string jsonFile = File.ReadAllText(path);
-                var data = JsonConvert.DeserializeObject<T>(jsonFile);
-                return data;
+                var path = GetDataPath(type);
+                if (!File.Exists(path)) File.WriteAllText(path, "[]");
+                var json = File.ReadAllText(path);
+                return JsonConvert.DeserializeObject<T>(json);
             }
-            catch (JsonException ex)
+            catch (Exception ex)
             {
                 Console.WriteLine($"Error fetching data: {ex.Message}");
                 throw;
             }
-
-        }
-        public static bool ModifyFieldById(PathTo expectedType, string id, object newValue)
-        {
-            var path = GetDataPath(expectedType);
-            var jsonFile = File.ReadAllText(path);
-
-            var data = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(jsonFile)
-                       ?? new List<Dictionary<string, object>>();
-
-            var item = data.FirstOrDefault(d => d.ContainsKey("Id") && d["Id"].ToString().Equals(id, StringComparison.OrdinalIgnoreCase));
-
-            if (item == null)
-                return false;
-
-            var newValues = JsonConvert.DeserializeObject<Dictionary<string, object>>(
-                JsonConvert.SerializeObject(newValue)
-            );
-            foreach (var _item in newValues)
-            {
-                if (_item.Key == "Id") continue;
-                item[_item.Key] = _item.Value;
-            }
-
-            File.WriteAllText(path, JsonConvert.SerializeObject(data, Formatting.Indented), Encoding.UTF8);
-
-            return true;
         }
 
-        public static bool Include<T>(T item, PathTo expectedType)
+        public static bool Include<T>(T item, PathTo type)
         {
-            var path = GetDataPath(expectedType);
             try
             {
-                var jsonFile = File.ReadAllText(path);
-                var data = JsonConvert.DeserializeObject<List<T>>(jsonFile) ?? new List<T>();
-                data.Add(item);
-                File.WriteAllText(path, JsonConvert.SerializeObject(data, Formatting.Indented), Encoding.UTF8);
+                var path = GetDataPath(type);
+                var json = File.Exists(path) ? File.ReadAllText(path) : "[]";
+                var array = JArray.Parse(json);
+                var newItem = JObject.FromObject(item);
+                array.Add(newItem);
+                File.WriteAllText(path, array.ToString(Formatting.Indented));
                 return true;
             }
             catch (Exception ex)
@@ -98,25 +70,28 @@ namespace Wish.ERP.Benner.Services
                 return false;
             }
         }
+
         public static bool DeleteById(PathTo expectedType, string id)
         {
             var path = GetDataPath(expectedType);
             try
             {
                 var jsonFile = File.ReadAllText(path);
-                var data = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(jsonFile) ?? new List<Dictionary<string, object>>();
-                var itemToRemove = data.FirstOrDefault(d => d["Id"].ToString().ToLower().Equals(id.ToLower()));
+                var jArray = JArray.Parse(jsonFile);
+
+                var itemToRemove = jArray.FirstOrDefault(obj =>
+                    obj["Id"] != null && obj["Id"].ToString().Equals(id, StringComparison.OrdinalIgnoreCase)
+                );
+
                 if (itemToRemove != null)
                 {
-                    data.Remove(itemToRemove);
-                    File.WriteAllText(path, JsonConvert.SerializeObject(data, Formatting.Indented), Encoding.UTF8);
+                    jArray.Remove(itemToRemove);
+                    File.WriteAllText(path, jArray.ToString(), Encoding.UTF8);
                     return true;
                 }
-                else
-                {
-                    Console.WriteLine($"Item com o Id '{id}' não encontrado");
-                    return false;
-                }
+
+                Console.WriteLine($"Item com o Id '{id}' não encontrado");
+                return false;
             }
             catch (Exception ex)
             {
@@ -124,7 +99,32 @@ namespace Wish.ERP.Benner.Services
                 return false;
             }
         }
+        public static bool ModifyFieldById(PathTo type, string id, object newValue)
+        {
+            try
+            {
+                var path = GetDataPath(type);
+                var json = File.Exists(path) ? File.ReadAllText(path) : "[]";
+                var array = JArray.Parse(json);
 
+                var item = array.FirstOrDefault(d => d["Id"]?.ToString()?.Trim().ToLower() == id.Trim().ToLower());
+                if (item == null) return false;
 
+                var newValues = JObject.FromObject(newValue);
+                foreach (var prop in newValues.Properties())
+                {
+                    if (prop.Name == "Id") continue; // não sobrescreve Id
+                    item[prop.Name] = prop.Value;
+                }
+
+                File.WriteAllText(path, array.ToString(Formatting.Indented));
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error modifying item: {ex.Message}");
+                return false;
+            }
+        }
     }
 }

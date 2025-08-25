@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Wish.ERP.Benner.Models;
 using Wish.ERP.Benner.Services;
+using Wish.ERP.Benner.Utils;
 
 namespace Wish.ERP.Benner.Views.Modals.Orders
 {
@@ -56,16 +57,22 @@ namespace Wish.ERP.Benner.Views.Modals.Orders
                 MessageBox.Show($"Preencha todos os Campos: {string.Join(" ,", invalidFields.Select(c => c.ToString()))}", "Validação", MessageBoxButton.OK, MessageBoxImage.Stop); return;
             }
             string _clientId = ClientCombo.SelectedValue.ToString();
+            string _clientName = DataManager.Instance.Clients.GetBy(c => c.Id == _clientId).Name;
 
+            Order order = new Order(Guid.NewGuid().ToString(), _clientId, _clientName, OrderBoxes.ToList(), (OrderStatus)StatusCombo.SelectedValue, DateTime.Now, (PaymentMethod)PaymentMethodsCombo.SelectedValue);
+
+
+            /*
             Order order = new Order()
             {
                 ClientId = _clientId,
                 ClientName = DataManager.Instance.Clients.GetBy(c => c.Id == _clientId).Name,
                 OrderBoxes = OrderBoxes.ToList(),
+
                 SaleDate = DateTime.Now,
                 Status = OrderStatus.Pendente,
                 PaymentMethod = (PaymentMethod)PaymentMethodsCombo.SelectedValue
-            };
+            };*/
 
             CreatedOrder = order;
 

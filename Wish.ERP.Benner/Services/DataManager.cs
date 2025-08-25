@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -20,7 +21,7 @@ namespace Wish.ERP.Benner.Services
 
         public List<T> GetAll(Func<T, bool> predicate = null)
         {
-            if(predicate != null)
+            if (predicate != null)
             {
                 return _items.Where(predicate).ToList();
             }
@@ -40,6 +41,7 @@ namespace Wish.ERP.Benner.Services
 
         public bool UpdateById(string id, T newValue, PathTo type)
         {
+
             var obj = _items.FirstOrDefault(_obj =>
             {
                 var prop = _obj.GetType().GetProperty("Id");
@@ -56,6 +58,7 @@ namespace Wish.ERP.Benner.Services
                 if (prop.Name == "Id") continue;
 
                 var newVal = prop.GetValue(newValue);
+                if (!prop.CanWrite) continue;
                 prop.SetValue(obj, newVal);
             }
 
@@ -68,7 +71,8 @@ namespace Wish.ERP.Benner.Services
 
         public bool DeleteById(string Id, PathTo type)
         {
-            var obj = _items.FirstOrDefault(_obj => {
+            var obj = _items.FirstOrDefault(_obj =>
+            {
                 var prop = _obj.GetType().GetProperty("Id");
                 if (prop == null) return false;
                 string value = prop.GetValue(_obj)?.ToString();
@@ -76,10 +80,13 @@ namespace Wish.ERP.Benner.Services
             });
 
             if (obj == null) return false;
-
-            JsonStorage.DeleteById(type, Id);
-            _items.Remove(obj);
-            return true;
+            Debug.WriteLine(Id);
+            if (JsonStorage.DeleteById(type, Id))
+            {
+                _items.Remove(obj);
+                return true;
+            }
+            return false;
         }
     }
 
@@ -88,7 +95,7 @@ namespace Wish.ERP.Benner.Services
         public Repository<Client> Clients { get; private set; }
         public Repository<Product> Products { get; private set; }
         public Repository<Order> Orders { get; private set; }
-        public Repository<List<string>> PaymentMethods { get;private set; }
+        public Repository<List<string>> PaymentMethods { get; private set; }
 
         private static DataManager instance { get; set; }
         public static DataManager Instance
@@ -97,12 +104,13 @@ namespace Wish.ERP.Benner.Services
             {
                 if (instance == null)
                 {
-                    instance =  new DataManager();
+                    instance = new DataManager();
                 }
                 return instance;
             }
         }
-        public DataManager() {
+        public DataManager()
+        {
             InitializeFetch();
         }
 
@@ -111,7 +119,7 @@ namespace Wish.ERP.Benner.Services
 
             var basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
             Clients = new Repository<Client>(JsonStorage.FetchData<List<Client>>(PathTo.Client) ?? new List<Client>());
-            Products = new Repository<Product> (JsonStorage.FetchData<List<Product>>(PathTo.Product));
+            Products = new Repository<Product>(JsonStorage.FetchData<List<Product>>(PathTo.Product));
             Orders = new Repository<Order>(JsonStorage.FetchData<List<Order>>(PathTo.Order));
         }
 
