@@ -30,14 +30,13 @@ namespace Wish.ERP.Benner.Views.Components
         {
             CreateOrderModal createOrderModal = new CreateOrderModal(Client);
 
-            
+
             createOrderModal.ShowDialog();
-            if (!createOrderModal.DialogResult == true) { MessageBox.Show("Erro ao adicionar e atualizar a lista"); } else
-            {
-                
-                CurrentSelectedClientOrders.OrderByDescending(c => c.SaleDate).Append(createOrderModal.CreatedOrder);
-            }
-                
+
+
+            CurrentSelectedClientOrders.OrderByDescending(c => c.SaleDate).Append(createOrderModal.CreatedOrder);
+
+
         }
     }
 }

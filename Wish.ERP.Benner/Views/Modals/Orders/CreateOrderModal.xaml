@@ -16,7 +16,6 @@
                 <TextBlock Margin="0,0,0,20" FontSize="20" FontWeight="Bold" 
                            TextAlignment="Center" Text="Novo Pedido" />
 
-                <!-- Cliente -->
                 <TextBlock>Cliente</TextBlock>
                 <ComboBox x:Name="ClientCombo"
                           IsEditable="True"
@@ -24,10 +23,9 @@
                           IsTextSearchEnabled="True"
                           DisplayMemberPath="Name"
                           SelectedValuePath="Id"
-                         
+                          SelectionChanged="ValidateForm"
                           Margin="0,0,0,10"/>
 
-                <!-- Produtos -->
                 <TextBlock>Produtos</TextBlock>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                     <ComboBox x:Name="ProductCombo"
@@ -37,12 +35,13 @@
                               IsTextSearchEnabled="True"
                               DisplayMemberPath="Name"
                               SelectedValuePath="Id"
+                              SelectionChanged="ValidateForm"
                               />
                     <TextBox x:Name="QuantityBox" Width="60" Margin="10,0,0,0" Text="1" VerticalContentAlignment="Center"/>
                     <Button Content="Adicionar" Click="AddProduct" Margin="10,0,0,0"/>
                 </StackPanel>
 
-                <!-- Lista de itens adicionados -->
+
                 <ListView ItemsSource="{Binding OrderBoxes}" x:Name="OrderItemsList" Height="150" Margin="0,0,0,10">
                     <ListView.View>
                         <GridView>
@@ -54,21 +53,19 @@
                     </ListView.View>
                 </ListView>
 
-                <!-- Status -->
+              
                 <StackPanel>
                     <TextBlock>Status</TextBlock>
-                    <ComboBox x:Name="StatusCombo" SelectedIndex="0" Margin="0,0,0,10">
+                    <ComboBox SelectionChanged="ValidateForm" x:Name="StatusCombo" SelectedIndex="0" Margin="0,0,0,10">
                     </ComboBox>
                     <TextBlock>Forma de Pagamento</TextBlock>
-                    <ComboBox x:Name="PaymentMethodsCombo" SelectedIndex="0" Margin="0,0,0,10">
+                    <ComboBox SelectionChanged="ValidateForm" x:Name="PaymentMethodsCombo" SelectedIndex="0" Margin="0,0,0,10">
                     </ComboBox>
                 </StackPanel>
                 
-                
 
-                <!-- Buttons -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
-                    <Button Width="100" Margin="5" Content="Salvar" Click="Done"/>
+                    <Button Width="100" Margin="5" Content="Finalizar" IsEnabled="False" x:Name="FinishButton" Click="Done"/>
                     <Button Width="100" Margin="5" Content="Cancelar" Click="Cancel"/>
                 </StackPanel>
             </StackPanel>

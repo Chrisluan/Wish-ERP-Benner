@@ -22,6 +22,7 @@ namespace Wish.ERP.Benner.Views.Modals.Orders
     {
 
         public Order CreatedOrder { get; private set; }
+
         public ObservableCollection<OrderBox> OrderBoxes { get; set; } = new ObservableCollection<OrderBox>();
 
         public CreateOrderModal(Client currentClient = null)
@@ -36,18 +37,30 @@ namespace Wish.ERP.Benner.Views.Modals.Orders
             StatusCombo.ItemsSource = Enum.GetValues(typeof(OrderStatus));
             ProductCombo.ItemsSource = DataManager.Instance.Products.GetAll();
             ClientCombo.ItemsSource = DataManager.Instance.Clients.GetAll();
-            if(currentClient != null) ClientCombo.SelectedValue = currentClient.Id;
+            if (currentClient != null) ClientCombo.SelectedValue = currentClient.Id;
+            this.DataContext = this;
             PaymentMethodsCombo.ItemsSource = Enum.GetValues(typeof(PaymentMethod));
         }
 
 
         private void Done(object sender, RoutedEventArgs e)
         {
+            var fields = new Dictionary<object, object>()
+            {
+                ["Cliente"] = ClientCombo,
+            };
+            var invalidFields = new List<object>();
+
+            if (!Validator.IsFieldsFilled(fields, out invalidFields))
+            {
+                MessageBox.Show($"Preencha todos os Campos: {string.Join(" ,", invalidFields.Select(c => c.ToString()))}", "Validação", MessageBoxButton.OK, MessageBoxImage.Stop); return;
+            }
             string _clientId = ClientCombo.SelectedValue.ToString();
 
             Order order = new Order()
             {
                 ClientId = _clientId,
+                ClientName = DataManager.Instance.Clients.GetBy(c => c.Id == _clientId).Name,
                 OrderBoxes = OrderBoxes.ToList(),
                 SaleDate = DateTime.Now,
                 Status = OrderStatus.Pendente,
@@ -78,6 +91,15 @@ namespace Wish.ERP.Benner.Views.Modals.Orders
         {
             this.Close();
         }
+        private void ValidateForm(object sender, EventArgs e)
+        {
+            bool isValid = ClientCombo.SelectedItem != null
+                           && OrderItemsList.Items.Count > 0
+                           && StatusCombo.SelectedItem != null
+                           && PaymentMethodsCombo.SelectedItem != null;
+
+            FinishButton.IsEnabled = isValid;
+        }
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
@@ -91,19 +113,35 @@ namespace Wish.ERP.Benner.Views.Modals.Orders
 
         private void AddProduct(object sender, RoutedEventArgs e)
         {
-
-            Product product = DataManager.Instance.Products.GetBy(p => p.Id == ProductCombo.SelectedValue.ToString());
-            OrderBox order = new OrderBox()
+            
+            int quantity = 0;
+            if (!int.TryParse(QuantityBox.Text, out quantity) || quantity <= 0)
             {
-                Product = product,
-                Amount = int.Parse(QuantityBox.Text)
-            };
-            OrderBoxes.Add(order);
-
-            foreach (var item in OrderBoxes)
-            {
-                MessageBox.Show((item.ProductName, item.Amount).ToString());
+                QuantityBox.BorderBrush = Brushes.Red;
+                return;
             }
+            if (ProductCombo.SelectedValue != null)
+            {
+                Product product = DataManager.Instance.Products.GetBy(p => p.Id == ProductCombo.SelectedValue.ToString()) ?? null;
+                if (product == null)
+                {
+                    ProductCombo.BorderBrush = Brushes.Red;
+                    return;
+                }
+                ProductCombo.BorderBrush = Brushes.Gray;
+                OrderBox order = new OrderBox()
+                {
+                    Product = product,
+                    Amount = int.Parse(QuantityBox.Text)
+                };
+                OrderBoxes.Add(order);
+            }
+            ValidateForm(this, new EventArgs());
+        }
+
+        private void ProductCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

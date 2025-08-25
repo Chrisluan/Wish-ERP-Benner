@@ -22,11 +22,11 @@ namespace Wish.ERP.Benner.Views.Modals.Orders
     public partial class EditOrderModal : Window
     {
 
-        private Order editingClient;
+        private Order editingOrder;
         public EditOrderModal(Order order)
         {
             InitializeComponent();
-            editingClient = order;
+           // editingClient = order;
            // NameBox.Text = editingClient.Name;
            // CPFBox.Text = editingClient.CPF;
            // AddresBox.Text = editingClient.Address;
@@ -48,27 +48,12 @@ namespace Wish.ERP.Benner.Views.Modals.Orders
                 ["CPF"] = CPFBox
             };
 
-            foreach (var field in fields)
-            {
-                if (field.Value != null)
-                    field.Value.BorderBrush = Brushes.Gray;
-            }
-
-            var emptyFields = fields.ToList().Where(v => v.Value.Text.Equals(string.Empty));
-
-            foreach (var field in emptyFields)
-            {
-                if (field.Value != null)
-                    field.Value.BorderBrush = Brushes.Red;
-            }
-
-            if (emptyFields.Any() || !CPFValidator(fields["CPF"].Text)) return;
 
 
             Client client = new Client(fields["name"].Text, fields["CPF"].Text, fields["address"].Text);
 
 
-            ClientServices.UpdateClient(editingClient.Id, client);
+            //ClientServices.UpdateClient(editingClient.Id, client);
             this.Close();
         }
         private void AllowDrag(object sender, MouseButtonEventArgs e)

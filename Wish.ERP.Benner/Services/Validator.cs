@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Wish.ERP.Benner.Services
 {
@@ -31,6 +33,43 @@ namespace Wish.ERP.Benner.Services
             int secondDigit = (remainder < 2) ? 0 : 11 - remainder;
             return (cpf[9] - '0' == firstDigit) && (cpf[10] - '0' == secondDigit);
         }
+        public static bool IsFieldsFilled(Dictionary<object, object> keyValues, out List<object> emptyFields)
+        {
+            emptyFields = new List<object>();
+
+            if (keyValues == null)
+                return false;
+
+            foreach (var kv in keyValues)
+            {
+                bool isEmpty = false;
+
+                switch (kv.Value)
+                {
+                    case TextBox tb:
+                        isEmpty = string.IsNullOrWhiteSpace(tb.Text);
+                        break;
+
+                    case ComboBox cb:
+                        isEmpty = cb.SelectedItem == null || string.IsNullOrWhiteSpace(cb.Text);
+                        break;
+
+                    case CheckBox chk:
+                        isEmpty = chk.IsChecked == false;
+                        break;
+
+                    default:
+                        isEmpty = kv.Value == null || kv.Value.Equals("");
+                        break;
+                }
+
+                if (isEmpty)
+                    emptyFields.Add(kv.Key);
+            }
+
+            return emptyFields.Count == 0;
+        }
+
 
     }
 }

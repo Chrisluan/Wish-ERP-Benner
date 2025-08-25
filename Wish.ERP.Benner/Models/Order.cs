@@ -23,6 +23,7 @@ namespace Wish.ERP.Benner.Models
     {
         public string Id { get; }
         public string ClientId { get; set; }
+        public string ClientName { get; set; }
         public List<OrderBox> OrderBoxes { get; set; }
         public double TotalOrderPrice => OrderBoxes?.Sum(p => p.Balance) ?? 0;
         public DateTime SaleDate { get; set; }
