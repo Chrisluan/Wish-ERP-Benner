@@ -21,7 +21,7 @@ namespace Wish.ERP.Benner.Views.Components
         {
             InitializeComponent();
             Client = selectedClient;
-            CurrentSelectedClientOrders = new ObservableCollection<Order>(DataManager.Instance.Orders.GetAll(o => o.ClientId == Client.Id));
+            
             this.DataContext = new OrdersViewModel();
         }
 

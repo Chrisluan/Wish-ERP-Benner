@@ -8,7 +8,7 @@ Projeto desenvolvido como teste técnico para a **Benner**, utilizando **.NET Fr
 
 ## Sobre
 
-Este projeto foi criado em um curto período de tempo, o que exigiu conciliar estudo de WPF com o desenvolvimento da aplicação. O principal desafio foi aprender a trabalhar com uma tecnologia que eu ainda não tinha experiência prática.
+Este projeto foi criado em um curto período de tempo, o que exigiu conciliar estudo de WPF com o desenvolvimento da aplicação. O principal desafio foi aprender a trabalhar com uma tecnologia que eu ainda não tinha experiência prática. Algumas funcionalidades requisitadas infelizmente não puderam ser implementadas devido ao curto período disponível e à necessidade de aprender a tecnologia simultaneamente.
 
 ---
 
@@ -44,5 +44,6 @@ git clone https://github.com/Chrisluan/Wish-ERP-Benner
 
 ## Observações
 
-* O projeto foi desenvolvido em um tempo limitado, conciliando aprendizado de **WPF**, com a entrega funcional.
+* O projeto foi desenvolvido em um tempo limitado, conciliando aprendizado de **WPF** com a entrega funcional.
+* Algumas funcionalidades requisitadas não puderam ser implementadas devido ao curto período de tempo e à necessidade de aprender a tecnologia simultaneamente.
 * Foco principal foi garantir **organização, clareza de código e boas práticas**, mesmo sem experiência prévia na tecnologia.

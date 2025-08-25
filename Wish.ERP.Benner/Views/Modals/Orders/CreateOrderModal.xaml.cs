@@ -61,19 +61,6 @@ namespace Wish.ERP.Benner.Views.Modals.Orders
 
             Order order = new Order(Guid.NewGuid().ToString(), _clientId, _clientName, OrderBoxes.ToList(), (OrderStatus)StatusCombo.SelectedValue, DateTime.Now, (PaymentMethod)PaymentMethodsCombo.SelectedValue);
 
-
-            /*
-            Order order = new Order()
-            {
-                ClientId = _clientId,
-                ClientName = DataManager.Instance.Clients.GetBy(c => c.Id == _clientId).Name,
-                OrderBoxes = OrderBoxes.ToList(),
-
-                SaleDate = DateTime.Now,
-                Status = OrderStatus.Pendente,
-                PaymentMethod = (PaymentMethod)PaymentMethodsCombo.SelectedValue
-            };*/
-
             CreatedOrder = order;
 
             bool success = OrdersServices.AddOrder(order);
