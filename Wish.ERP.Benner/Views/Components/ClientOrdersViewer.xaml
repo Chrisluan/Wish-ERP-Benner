@@ -7,20 +7,42 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <Grid Background="#c2c2c2" >
+    <UserControl.Resources>
+        <local:EnumToBooleanConverter x:Key="EnumToBooleanConverter"/>
+    </UserControl.Resources>
+
+    <Grid Background="#c2c2c2">
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="60"/>
+            <!-- altura maior para colocar filtros + botão -->
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel  Grid.Row="0" HorizontalAlignment="Right">
-            <Button Click="CreateNewOrder" Padding="5" Content="Criar novo Pedido" Width="150"/>
 
+        <!-- Linha de filtros e botão -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5">
 
+            <!-- Filtros -->
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <RadioButton Content="Todos" Margin="5,0"
+                             IsChecked="{Binding StatusSelecionado, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=All}" />
+                <RadioButton Content="Pago" Margin="5,0"
+                             IsChecked="{Binding StatusSelecionado, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Paid}" />
+                <RadioButton Content="Entregue" Margin="5,0"
+                             IsChecked="{Binding StatusSelecionado, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Delivered}" />
+                <RadioButton Content="Pendente" Margin="5,0"
+                             IsChecked="{Binding StatusSelecionado, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Pendent}" />
+                <RadioButton Content="Enviado" Margin="5,0"
+                             IsChecked="{Binding StatusSelecionado, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Sent}" />
+            </StackPanel>
+
+            <!-- Botão criar pedido -->
+            <Button Click="CreateNewOrder" Padding="5" Content="Criar novo Pedido" Width="150" Margin="10,0,0,0"/>
         </StackPanel>
-        <ListView
-            Grid.Row="1"
-          Background="Transparent"
-          ItemsSource="{Binding CurrentSelectedClientOrders}">
+
+        <!-- ListView dos pedidos -->
+        <ListView Grid.Row="1"
+                  Background="Transparent"
+                  ItemsSource="{Binding CurrentSelectedClientOrders}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="50"/>
@@ -32,5 +54,4 @@
             </ListView.View>
         </ListView>
     </Grid>
-   
 </UserControl>

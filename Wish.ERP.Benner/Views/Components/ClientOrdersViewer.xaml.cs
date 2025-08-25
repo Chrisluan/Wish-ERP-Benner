@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using Wish.ERP.Benner.Models;
 using Wish.ERP.Benner.Services;
@@ -13,6 +14,7 @@ namespace Wish.ERP.Benner.Views.Components
     {
 
         public ObservableCollection<Order> CurrentSelectedClientOrders { get; set; }
+
         Client Client { get; set; }
         public ClientOrdersViewer(Client selectedClient)
         {
@@ -28,12 +30,14 @@ namespace Wish.ERP.Benner.Views.Components
         {
             CreateOrderModal createOrderModal = new CreateOrderModal(Client);
 
+            
             createOrderModal.ShowDialog();
-
-            if (createOrderModal.DialogResult == true)
+            if (!createOrderModal.DialogResult == true) { MessageBox.Show("Erro ao adicionar e atualizar a lista"); } else
             {
-                CurrentSelectedClientOrders.OrderByDescending(c=> c.SaleDate).Append(createOrderModal.CreatedOrder);
+                
+                CurrentSelectedClientOrders.OrderByDescending(c => c.SaleDate).Append(createOrderModal.CreatedOrder);
             }
+                
         }
     }
 }

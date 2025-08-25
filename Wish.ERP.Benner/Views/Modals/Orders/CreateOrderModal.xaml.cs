@@ -56,17 +56,16 @@ namespace Wish.ERP.Benner.Views.Modals.Orders
 
             CreatedOrder = order;
 
-            // Salva no banco/serviço
-            bool sucesso = OrdersServices.AddOrder(order);
+            bool success = OrdersServices.AddOrder(order);
 
-            if (sucesso)
+            if (success)
             {
                 this.DialogResult = true;
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Erro ao criar o pedido!");
+                MessageBox.Show("Erro ao criar o pedido!", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

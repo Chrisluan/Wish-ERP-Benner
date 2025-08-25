@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Interfaces\EnumToBooleanConverter.cs" />
     <Compile Include="Models\OrderBox.cs" />
     <Compile Include="Services\OrdersServices.cs" />
     <Compile Include="Services\ClientServices.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Services\JsonStorage.cs" />
     <Compile Include="Services\Validator.cs" />
     <Compile Include="ViewModels\ClientsViewModel.cs" />
+    <Compile Include="ViewModels\OrderFilterTypeViewModel.cs" />
     <Compile Include="ViewModels\OrdersViewModel.cs" />
     <Compile Include="Views\ClientsView.xaml.cs">
       <DependentUpon>ClientsView.xaml</DependentUpon>

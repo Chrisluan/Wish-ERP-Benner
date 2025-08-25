@@ -10,7 +10,7 @@ namespace Wish.ERP.Benner.Services
         public static event Action OnOrdersChanged;
         public static bool AddOrder(Order order)
         {
-            bool result = false;
+            bool result;
             result = DataManager.Instance.Orders.Add(order, PathTo.Order);
             if (!result) return false;
 

@@ -42,12 +42,7 @@ namespace Wish_ERP.Views
             DataContext = new Wish.ERP.Benner.ViewModels.OrdersViewModel();
             InitializeComponent();
         }
-        private void AddClient(object sender, RoutedEventArgs e)
-        {
-            Client newClient = new Client("", "", "");
-
-        }
-        private void DeleteClient(object sender, RoutedEventArgs e)
+        private void DeleteOrder(object sender, RoutedEventArgs e)
         {
 
 
@@ -71,8 +66,7 @@ namespace Wish_ERP.Views
         private void HandleSelectionList(object sender, SelectionChangedEventArgs e)
         {
             selectedOrders = OrdersList.SelectedItems.Cast<Order>().ToList();
-            DeleteClientButton.IsEnabled = selectedOrders.Any();
-            EditClientButton.IsEnabled = selectedOrders.Count == 1;
+            DeleteOrderButton.IsEnabled = selectedOrders.Any();
         }
 
         private void CreateOrder(object sender, RoutedEventArgs e)
@@ -80,15 +74,6 @@ namespace Wish_ERP.Views
             var createOrderModal = new CreateOrderModal();
             createOrderModal.ShowDialog();
 
-        }
-
-        private void EditClient(object sender, RoutedEventArgs e)
-        {
-            if (OrdersList.SelectedItem is Client selectedClient)
-            {
-                //var editClientModal = new EditClientModal(selectedClient);
-                //editClientModal.ShowDialog();
-            }
         }
 
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)

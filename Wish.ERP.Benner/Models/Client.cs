@@ -10,7 +10,7 @@ namespace Wish.ERP.Benner.Models
         public string CPF { get; set; }
         public string Address { get; set; }
 
-        public Client(string name, string cpf, string address)
+        public Client(string name, string cpf, string address = "")
         {
             this.Id = Guid.NewGuid().ToString();
             this.Name = name;

@@ -33,5 +33,20 @@ namespace Wish_ERP.Views
         {
             InitializeComponent();
         }
+
+
+        private void DeleteProduct(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void EditProduct(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void CreateProduct(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }

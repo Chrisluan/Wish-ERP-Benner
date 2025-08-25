@@ -6,7 +6,45 @@
              xmlns:local="clr-namespace:Wish_ERP.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="BurlyWood">
-        <TextBlock Text="Products Screen" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.2*" MaxWidth="400"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <DockPanel LastChildFill="True">
+                <TextBox Padding="5" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
+            </DockPanel>
+
+            <DockPanel Grid.Column="1" LastChildFill="True" HorizontalAlignment="Right">
+                <Button Padding="5" IsEnabled="False" Click="DeleteProduct" x:Name="DeleteProductButton" Content="Deletar"  Margin="10,0,0,0"/>
+                <Button Padding="5" IsEnabled="True" Click="CreateProduct" Margin="10,0,0,0" Content="Novo" DockPanel.Dock="Right"/>
+                <Button Padding="5" IsEnabled="False" x:Name="EditProductButton" Click="EditProduct" Margin="10,0,0,0" Content="Editar" DockPanel.Dock="Right"/>
+            </DockPanel>
+
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <ListView MouseDoubleClick="EditProduct" Margin="0,5,0,0" SelectionMode="Extended" Background="Transparent" Grid.Row="0" Name="ClientsList" ItemsSource="{Binding FilteredClientList}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="50"/>
+                        <GridViewColumn Header="Nome" DisplayMemberBinding="{Binding Code}" Width="200"/>
+                        <GridViewColumn Header="Valor" DisplayMemberBinding="{Binding Price}" Width="200"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
     </Grid>
 </UserControl>
