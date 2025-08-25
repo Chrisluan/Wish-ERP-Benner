@@ -62,14 +62,16 @@ namespace Wish.ERP.Benner.Views.Modals.Clients
                     field.Value.BorderBrush = Brushes.Red;
             }
 
-            if (emptyFields.Any() || !CPFValidator(fields["CPF"].Text)) return;
+            if (emptyFields.Any()) return;
 
-
+            if (!Validator.IsCPFValid(fields["CPF"].Text)) {
+                MessageBox.Show("CPF INVÁLIDO", "Validação", MessageBoxButton.OK, MessageBoxImage.Stop);
+                return;
+            } 
             Client client = new Client(fields["name"].Text, fields["CPF"].Text, fields["address"].Text);
-
-
-            ClientServices.UpdateClient(editingClient.Id, client);
+            ClientServices.AddClient(client);
             this.Close();
+
         }
         private void AllowDrag(object sender, MouseButtonEventArgs e)
         {

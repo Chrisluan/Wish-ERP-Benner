@@ -63,6 +63,7 @@
     <Compile Include="Services\ClientServices.cs" />
     <Compile Include="Services\DataManager.cs" />
     <Compile Include="Services\JsonStorage.cs" />
+    <Compile Include="Services\Validator.cs" />
     <Compile Include="ViewModels\ClientsViewModel.cs" />
     <Compile Include="ViewModels\OrdersViewModel.cs" />
     <Compile Include="Views\ClientsView.xaml.cs">
