@@ -15,6 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Wish.ERP.Benner.Models;
 using Wish.ERP.Benner.Services;
+using Wish.ERP.Benner.Views.Components;
+using Wish.ERP.Benner.Views.Modals;
 using Wish.ERP.Benner.Views.Modals.Clients;
 using Wish_ERP.ViewModels;
 
@@ -24,9 +26,6 @@ namespace Wish_ERP.Views
     {
 
         private static ClientsView instance = null;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
 
         private List<Client> selectedClients;
         public static ClientsView Instance
@@ -40,10 +39,12 @@ namespace Wish_ERP.Views
                 return instance;
             }
         }
+
+
         public ClientsView()
         {
             InitializeComponent();
-            
+            DataContext = new ClientsViewModel();
         }
 
         private void AddClient(object sender, RoutedEventArgs e)
@@ -53,8 +54,6 @@ namespace Wish_ERP.Views
         }
         private void DeleteClient(object sender, RoutedEventArgs e)
         {
-
-           
             var selectedClients = ClientsList.SelectedItems.Cast<Client>().ToList();
             if (selectedClients.Count == 1)
             {
@@ -71,25 +70,29 @@ namespace Wish_ERP.Views
                 ClientServices.DeleteMany(ids);
             }
         }
-        private void OpenClient(object sender, MouseButtonEventArgs e)
-        {
-            if (ClientsList.SelectedItem is Client selectedClient)
-            {
-
-            }
-        }
 
         private void HandleSelectionList(object sender, SelectionChangedEventArgs e)
         {
             selectedClients = ClientsList.SelectedItems.Cast<Client>().ToList();
             DeleteClientButton.IsEnabled = selectedClients.Any();
+            EditClientButton.IsEnabled = selectedClients.Count == 1;
+            SelectedClientViewer.Content = new ClientOrdersViewer(selectedClients.Count == 1 ? selectedClients.FirstOrDefault() : new Client("", "", ""));
         }
 
         private void CreateClient(object sender, RoutedEventArgs e)
         {
-            var CreateClientModal = new CreateClientModal();
-            CreateClientModal.ShowDialog();
+            var createClientModal = new CreateClientModal();
+            createClientModal.ShowDialog();
             
+        }
+
+        private void EditClient(object sender, RoutedEventArgs e)
+        {
+            if (ClientsList.SelectedItem is Client selectedClient)
+            {
+                var editClientModal = new EditClientModal(selectedClient);
+                editClientModal.ShowDialog();
+            }
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Wish.ERP.Benner.Models
         public string Name { get; set; }
         public int Code { get; set; }
         public double Price { get; set; }
+        
 
         public Product(string name, int code, double price)
         {

@@ -14,16 +14,23 @@ using System.Windows.Shapes;
 using Wish.ERP.Benner.Models;
 using Wish.ERP.Benner.Services;
 
-namespace Wish.ERP.Benner.Views.Modals.Clients
+namespace Wish.ERP.Benner.Views.Modals.Orders
 {
     /// <summary>
-    /// Lógica interna para CreateClientModal.xaml
+    /// Lógica interna para ClientOverview.xaml
     /// </summary>
-    public partial class CreateClientModal : Window
+    public partial class EditOrderModal : Window
     {
-        public CreateClientModal()
+
+        private Order editingClient;
+        public EditOrderModal(Order order)
         {
             InitializeComponent();
+            editingClient = order;
+           // NameBox.Text = editingClient.Name;
+           // CPFBox.Text = editingClient.CPF;
+           // AddresBox.Text = editingClient.Address;
+
             var mainw = Application.Current.MainWindow;
 
             mainw.Effect = new System.Windows.Media.Effects.BlurEffect
@@ -31,7 +38,6 @@ namespace Wish.ERP.Benner.Views.Modals.Clients
                 Radius = 5
             };
         }
-
         private void Done(object sender, RoutedEventArgs e)
         {
 
@@ -62,7 +68,7 @@ namespace Wish.ERP.Benner.Views.Modals.Clients
             Client client = new Client(fields["name"].Text, fields["CPF"].Text, fields["address"].Text);
 
 
-            ClientServices.AddClient(client);
+            ClientServices.UpdateClient(editingClient.Id, client);
             this.Close();
         }
         private void AllowDrag(object sender, MouseButtonEventArgs e)

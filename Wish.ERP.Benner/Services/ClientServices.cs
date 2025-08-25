@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Wish.ERP.Benner.Models;
@@ -30,9 +31,9 @@ namespace Wish.ERP.Benner.Services
             }
             OnClientsChanged?.Invoke();
         }
-        public static void UpdateClient(Client client, Client newValue)
+        public static void UpdateClient(string Id, Client newValue)
         {
-            DataManager.Instance.Clients.UpdateById(client.Id, newValue, PathTo.Client);
+            DataManager.Instance.Clients.UpdateById(Id, newValue, PathTo.Client);
             OnClientsChanged?.Invoke();
         } 
     }

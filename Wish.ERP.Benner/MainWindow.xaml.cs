@@ -21,7 +21,7 @@ namespace Wish_ERP
     {
         private readonly Dictionary<Type, string> pageNames = new Dictionary<Type, string>
         {
-            { typeof(Views.OrderView), "Serviços" },
+            { typeof(Views.OrderView), "Pedidos" },
             { typeof(Views.ClientsView), "Clientes" },
             { typeof(Views.ProductsView), "Produtos" }
         };
@@ -29,7 +29,7 @@ namespace Wish_ERP
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new ViewModels.ClientsViewModel();
+           
             ChangeCurrentPage(Views.OrderView.Instance);
         }
 

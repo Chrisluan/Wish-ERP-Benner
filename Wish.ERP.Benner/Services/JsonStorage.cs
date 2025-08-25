@@ -89,7 +89,7 @@ namespace Wish.ERP.Benner.Services
                 var jsonFile = File.ReadAllText(path);
                 var data = JsonConvert.DeserializeObject<List<T>>(jsonFile) ?? new List<T>();
                 data.Add(item);
-                File.WriteAllText(path, JsonConvert.SerializeObject(data), Encoding.UTF8);
+                File.WriteAllText(path, JsonConvert.SerializeObject(data, Formatting.Indented), Encoding.UTF8);
                 return true;
             }
             catch (Exception ex)

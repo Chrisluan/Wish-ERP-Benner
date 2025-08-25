@@ -51,6 +51,7 @@ namespace Wish_ERP.ViewModels
         {
             FilteredClientList = new ObservableCollection<Client>();
             UpdateClientList();
+            
         }
         public void UpdateClientList()
         {

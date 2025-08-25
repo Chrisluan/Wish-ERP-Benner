@@ -7,36 +7,45 @@ namespace Wish.ERP.Benner.Models
 {
     public enum OrderStatus
     {
-        Pending,
-        Paid,
-        Delivered,
-        Sent
+        Pendente,
+        Pago,
+        Entregue,
+        Enviado
+    }
+    public enum PaymentMethod
+    {
+        Dinheiro,
+        Cartao,
+        Boleto
+
     }
     public class Order
     {
-        public string Id { get; set; }
-        public Client Client { get; set; }
-        public List<Product> Products { get; set; }
-        public double TotalPrice 
-        { 
-            get 
+        public string Id { get; }
+        public string ClientId { get; set; }
+        public List<OrderBox> OrderBoxes { get; set; }
+        public double TotalOrderPrice => OrderBoxes?.Sum(p => p.Balance) ?? 0;
+        public DateTime SaleDate { get; set; }
+        public PaymentMethod PaymentMethod { get; set; }
+
+        public string ProductsNames
+        {
+            get
             {
-                return Products.Sum(p => p.Price);
+                if (OrderBoxes == null || !OrderBoxes.Any())
+                    return string.Empty;
+
+                return string.Join(", ", OrderBoxes.Select(product => product.ProductName));
             }
         }
-        public DateTime SaleDate { get; set; }
-
-        public string Address { get; set; }
-        public OrderStatus Status { get; set; } = OrderStatus.Pending;
-
-
-        public Order(Client client, List<Product> products, DateTime saleDate)
+        public Order()
         {
             Id = Guid.NewGuid().ToString();
-            this.Client = client;
-            this.SaleDate = saleDate;
-            this.Products = products;
-            SaleDate = saleDate;
         }
+        
+
+        public OrderStatus Status { get; set; } = OrderStatus.Pendente;
+
+
     }
 }

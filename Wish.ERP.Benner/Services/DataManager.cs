@@ -18,8 +18,12 @@ namespace Wish.ERP.Benner.Services
             _items = items ?? new List<T>();
         }
 
-        public List<T> GetAll()
+        public List<T> GetAll(Func<T, bool> predicate = null)
         {
+            if(predicate != null)
+            {
+                return _items.Where(predicate).ToList();
+            }
             return _items;
         }
 
@@ -28,10 +32,10 @@ namespace Wish.ERP.Benner.Services
             return _items.FirstOrDefault(predicate);
         }
 
-        public void Add(T item, PathTo type)
+        public bool Add(T item, PathTo type)
         {
             _items.Add(item);
-            JsonStorage.Include(item, type);
+            return JsonStorage.Include(item, type);
         }
 
         public bool UpdateById(string id, T newValue, PathTo type)
@@ -55,7 +59,7 @@ namespace Wish.ERP.Benner.Services
                 prop.SetValue(obj, newVal);
             }
 
-            var idValue = typeof(T).GetProperty("Id")?.GetValue(obj);
+
             JsonStorage.ModifyFieldById(type, id, newValue);
 
             return true;
@@ -81,7 +85,6 @@ namespace Wish.ERP.Benner.Services
 
     class DataManager
     {
-
         public Repository<Client> Clients { get; private set; }
         public Repository<Product> Products { get; private set; }
         public Repository<Order> Orders { get; private set; }

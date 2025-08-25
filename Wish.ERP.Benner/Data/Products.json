@@ -1,290 +1,242 @@
 ﻿[
   {
-    "Id": "e1f2g3h4-i5j6-7890-1234-56789abcdef0",
-    "Name": "Bruno Fernandes",
-    "CPF": "12398745600",
-    "Address": "Rua das Laranjeiras, 12 - Copacabana, Rio de Janeiro"
+    "Id": "guid-1",
+    "Name": "Notebook Dell Inspiron 15",
+    "Code": 1001,
+    "Price": 3899.90
   },
   {
-    "Id": "f2g3h4i5-j6k7-8901-2345-6789abcdef01",
-    "Name": "Carla Mendes",
-    "CPF": "98732165400",
-    "Address": "Av. Rio Branco, 34 - Centro, Rio de Janeiro"
+    "Id": "guid-2",
+    "Name": "Monitor LG Ultrawide 29\"",
+    "Code": 1002,
+    "Price": 1299.99
   },
   {
-    "Id": "g3h4i5j6-k7l8-9012-3456-789abcdef012",
-    "Name": "Diego Barbosa",
-    "CPF": "45678912300",
-    "Address": "Rua Boa Vista, 56 - Centro, S\u00E3o Paulo"
+    "Id": "guid-3",
+    "Name": "Teclado Mecânico Redragon Kumara",
+    "Code": 1003,
+    "Price": 249.90
   },
   {
-    "Id": "h4i5j6k7-l8m9-0123-4567-89abcdef0123",
-    "Name": "Eliana Rocha",
-    "CPF": "32165498700",
-    "Address": "Rua das Ac\u00E1cias, 78 - Jardim Bot\u00E2nico, Rio de Janeiro"
+    "Id": "guid-4",
+    "Name": "Mouse Gamer Logitech G502",
+    "Code": 1004,
+    "Price": 349.00
   },
   {
-    "Id": "i5j6k7l8-m9n0-1234-5678-9abcdef01234",
-    "Name": "F\u00E1bio Lima",
-    "CPF": "65432198700",
-    "Address": "Av. Paulista, 1000 - Bela Vista, S\u00E3o Paulo"
+    "Id": "guid-5",
+    "Name": "Headset HyperX Cloud II",
+    "Code": 1005,
+    "Price": 499.90
   },
   {
-    "Id": "j6k7l8m9-n0o1-3456-789a-bcdef0123456",
-    "Name": "Gabriela Santos",
-    "CPF": "78945612300",
-    "Address": "Rua Amazonas, 90 - Centro, Belo Horizonte"
+    "Id": "guid-6",
+    "Name": "Placa de Vídeo NVIDIA RTX 4070",
+    "Code": 1006,
+    "Price": 3899.00
   },
   {
-    "Id": "k7l8m9n0-o1p2-5678-9abc-def012345678",
-    "Name": "Hugo Carvalho",
-    "CPF": "14796325800",
-    "Address": "Av. Brasil, 200 - Centro, Salvador"
+    "Id": "guid-7",
+    "Name": "Processador Intel Core i7-13700K",
+    "Code": 1007,
+    "Price": 2599.00
   },
   {
-    "Id": "l8m9n0o1-p2q3-789a-bcde-f0123456789a",
-    "Name": "Isabela Moreira",
-    "CPF": "96314725800",
-    "Address": "Rua XV de Novembro, 123 - Centro, Curitiba"
+    "Id": "guid-8",
+    "Name": "Processador AMD Ryzen 7 5800X",
+    "Code": 1008,
+    "Price": 1699.00
   },
   {
-    "Id": "m9n0o1p2-q3r4-9abc-def0-123456789abc",
-    "Name": "Jo\u00E3o Pedro Gomes",
-    "CPF": "85296374100",
-    "Address": "Rua do Com\u00E9rcio, 400 - Centro, Porto Alegre"
+    "Id": "guid-9",
+    "Name": "Placa-mãe ASUS TUF Gaming B550M",
+    "Code": 1009,
+    "Price": 999.99
   },
   {
-    "Id": "n0o1p2q3-r4s5-abcd-ef01-23456789abcd",
-    "Name": "Karen Nunes",
-    "CPF": "74125896300",
-    "Address": "Av. Sete de Setembro, 789 - Centro, Recife"
+    "Id": "guid-10",
+    "Name": "Memória RAM Corsair Vengeance 16GB DDR4",
+    "Code": 1010,
+    "Price": 429.90
   },
   {
-    "Id": "o1p2q3r4-s5t6-bcde-f012-3456789abcde",
-    "Name": "Leonardo Pinto",
-    "CPF": "36925814700",
-    "Address": "Rua Paran\u00E1, 15 - Centro, Porto Alegre"
+    "Id": "guid-11",
+    "Name": "Memória RAM Kingston Fury Beast 32GB DDR5",
+    "Code": 1011,
+    "Price": 1199.00
   },
   {
-    "Id": "p2q3r4s5-t6u7-cdef-0123-456789abcdef",
-    "Name": "Marina Alves",
-    "CPF": "25814736900",
-    "Address": "Rua Pernambuco, 22 - Boa Viagem, Recife"
+    "Id": "guid-12",
+    "Name": "SSD Kingston NV2 1TB NVMe",
+    "Code": 1012,
+    "Price": 379.90
   },
   {
-    "Id": "q3r4s5t6-u7v8-def0-1234-56789abcdef0",
-    "Name": "Nicolas Rocha",
-    "CPF": "14785236900",
-    "Address": "Av. Atl\u00E2ntica, 500 - Copacabana, Rio de Janeiro"
+    "Id": "guid-13",
+    "Name": "SSD Samsung 980 PRO 2TB NVMe",
+    "Code": 1013,
+    "Price": 1199.99
   },
   {
-    "Id": "r4s5t6u7-v8w9-ef01-2345-6789abcdef01",
-    "Name": "Ol\u00EDvia Martins",
-    "CPF": "96385214700",
-    "Address": "Rua Bahia, 123 - Centro, S\u00E3o Paulo"
+    "Id": "guid-14",
+    "Name": "HD Seagate Barracuda 2TB",
+    "Code": 1014,
+    "Price": 399.90
   },
   {
-    "Id": "s5t6u7v8-w9x0-f012-3456-789abcdef012",
-    "Name": "Paulo Henrique",
-    "CPF": "74196385200",
-    "Address": "Rua Goi\u00E1s, 45 - Centro, Belo Horizonte"
+    "Id": "guid-15",
+    "Name": "Fonte Corsair CV650 650W",
+    "Code": 1015,
+    "Price": 349.99
   },
   {
-    "Id": "t6u7v8w9-x0y1-0123-4567-89abcdef0123",
-    "Name": "Quintina Costa",
-    "CPF": "85274196300",
-    "Address": "Av. Ipiranga, 78 - Centro, Porto Alegre"
+    "Id": "guid-16",
+    "Name": "Fonte EVGA 750W 80 Plus Gold",
+    "Code": 1016,
+    "Price": 579.00
   },
   {
-    "Id": "u7v8w9x0-y1z2-1234-5678-9abcdef01234",
-    "Name": "Ricardo Fernandes",
-    "CPF": "96325874100",
-    "Address": "Rua das Flores, 33 - Centro, Rio de Janeiro"
+    "Id": "guid-17",
+    "Name": "Gabinete Gamer NZXT H510",
+    "Code": 1017,
+    "Price": 499.00
   },
   {
-    "Id": "v8w9x0y1-z2a3-3456-789a-bcdef0123456",
-    "Name": "Sabrina Lima",
-    "CPF": "15975348600",
-    "Address": "Av. Amazonas, 90 - Centro, Belo Horizonte"
+    "Id": "guid-18",
+    "Name": "Gabinete Cooler Master MasterBox",
+    "Code": 1018,
+    "Price": 399.00
   },
   {
-    "Id": "w9x0y1z2-a3b4-5678-9abc-def012345678",
-    "Name": "Thiago Souza",
-    "CPF": "35715948600",
-    "Address": "Rua Pernambuco, 210 - Boa Viagem, Recife"
+    "Id": "guid-19",
+    "Name": "Cadeira Gamer ThunderX3",
+    "Code": 1019,
+    "Price": 999.00
   },
   {
-    "Id": "x0y1z2a3-b4c5-789a-bcde-f0123456789a",
-    "Name": "\u00DArsula Mendes",
-    "CPF": "95175348600",
-    "Address": "Rua Maranh\u00E3o, 15 - Centro, S\u00E3o Lu\u00EDs"
+    "Id": "guid-20",
+    "Name": "Mousepad Gamer XXL Redragon",
+    "Code": 1020,
+    "Price": 89.90
   },
   {
-    "Id": "y1z2a3b4-c5d6-9abc-def0-123456789abc",
-    "Name": "Vin\u00EDcius Rocha",
-    "CPF": "75395148600",
-    "Address": "Av. Atl\u00E2ntica, 100 - Copacabana, Rio de Janeiro"
+    "Id": "guid-21",
+    "Name": "Impressora Epson EcoTank L3250",
+    "Code": 1021,
+    "Price": 1299.00
   },
   {
-    "Id": "z2a3b4c5-d6e7-abcd-ef01-23456789abcd",
-    "Name": "Wellington Dias",
-    "CPF": "25896314700",
-    "Address": "Rua Cear\u00E1, 123 - Centro, Fortaleza"
+    "Id": "guid-22",
+    "Name": "Scanner Canon Lide 400",
+    "Code": 1022,
+    "Price": 599.00
   },
   {
-    "Id": "a3b4c5d6-e7f8-bcde-f012-3456789abcde",
-    "Name": "X\u00EAnia Carvalho",
-    "CPF": "36974185200",
-    "Address": "Rua Goi\u00E1s, 55 - Centro, Belo Horizonte"
+    "Id": "guid-23",
+    "Name": "Roteador TP-Link Archer AX20 Wi-Fi 6",
+    "Code": 1023,
+    "Price": 499.00
   },
   {
-    "Id": "b4c5d6e7-f8g9-cdef-0123-456789abcdef",
-    "Name": "Yuri Alves",
-    "CPF": "14736985200",
-    "Address": "Av. Paulista, 500 - Bela Vista, S\u00E3o Paulo"
+    "Id": "guid-24",
+    "Name": "Switch TP-Link 8 Portas Gigabit",
+    "Code": 1024,
+    "Price": 199.90
   },
   {
-    "Id": "c5d6e7f8-g9h0-def0-1234-56789abcdef0",
-    "Name": "Zilda Nunes",
-    "CPF": "96374125800",
-    "Address": "Rua Maranh\u00E3o, 78 - Centro, S\u00E3o Lu\u00EDs"
+    "Id": "guid-25",
+    "Name": "Placa de Rede Intel AX210 Wi-Fi 6E",
+    "Code": 1025,
+    "Price": 349.00
   },
   {
-    "Id": "d6e7f8g9-h0i1-ef01-2345-6789abcdef01",
-    "Name": "Andr\u00E9 Santos",
-    "CPF": "85296374100",
-    "Address": "Rua Paran\u00E1, 90 - Centro, Porto Alegre"
+    "Id": "guid-26",
+    "Name": "Webcam Logitech C920s Full HD",
+    "Code": 1026,
+    "Price": 499.00
   },
   {
-    "Id": "e7f8g9h0-i1j2-f012-3456-789abcdef012",
-    "Name": "Bianca Oliveira",
-    "CPF": "74185296300",
-    "Address": "Av. Sete de Setembro, 321 - Centro, Recife"
+    "Id": "guid-27",
+    "Name": "Microfone Blue Yeti USB",
+    "Code": 1027,
+    "Price": 999.90
   },
   {
-    "Id": "f8g9h0i1-j2k3-0123-4567-89abcdef0123",
-    "Name": "Caio Lima",
-    "CPF": "25814796300",
-    "Address": "Rua do Com\u00E9rcio, 456 - Centro, Porto Alegre"
+    "Id": "guid-28",
+    "Name": "Caixa de Som JBL Quantum Duo",
+    "Code": 1028,
+    "Price": 899.00
   },
   {
-    "Id": "g9h0i1j2-k3l4-1234-5678-9abcdef01234",
-    "Name": "Daniela Martins",
-    "CPF": "36925814700",
-    "Address": "Rua Amazonas, 12 - Centro, Belo Horizonte"
+    "Id": "guid-29",
+    "Name": "HD Externo WD Elements 2TB",
+    "Code": 1029,
+    "Price": 499.00
   },
   {
-    "Id": "h0i1j2k3-l4m5-3456-789a-bcdef0123456",
-    "Name": "Eduardo Rocha",
-    "CPF": "14785296300",
-    "Address": "Av. Brasil, 210 - Centro, Salvador"
+    "Id": "guid-30",
+    "Name": "SSD Externo Sandisk Extreme 1TB",
+    "Code": 1030,
+    "Price": 899.00
   },
   {
-    "Id": "i1j2k3l4-m5n6-5678-9abc-def012345678",
-    "Name": "Fabiana Costa",
-    "CPF": "96314785200",
-    "Address": "Rua Bahia, 34 - Centro, S\u00E3o Paulo"
+    "Id": "guid-31",
+    "Name": "Pendrive Kingston 128GB",
+    "Code": 1031,
+    "Price": 119.90
   },
   {
-    "Id": "j2k3l4m5-n6o7-789a-bcde-f0123456789a",
-    "Name": "Gustavo Fernandes",
-    "CPF": "85274136900",
-    "Address": "Av. Atl\u00E2ntica, 200 - Copacabana, Rio de Janeiro"
+    "Id": "guid-32",
+    "Name": "Pendrive Sandisk 256GB",
+    "Code": 1032,
+    "Price": 199.90
   },
   {
-    "Id": "k3l4m5n6-o7p8-9abc-def0-123456789abc",
-    "Name": "Helena Alves",
-    "CPF": "74196325800",
-    "Address": "Rua Pernambuco, 89 - Boa Viagem, Recife"
+    "Id": "guid-33",
+    "Name": "Hub USB-C 7 em 1",
+    "Code": 1033,
+    "Price": 249.90
   },
   {
-    "Id": "l4m5n6o7-p8q9-abcd-ef01-23456789abcd",
-    "Name": "Igor Lima",
-    "CPF": "36914785200",
-    "Address": "Rua Cear\u00E1, 45 - Centro, Fortaleza"
+    "Id": "guid-34",
+    "Name": "Carregador Notebook Lenovo 65W",
+    "Code": 1034,
+    "Price": 199.90
   },
   {
-    "Id": "m5n6o7p8-q9r0-bcde-f012-3456789abcde",
-    "Name": "J\u00FAlia Martins",
-    "CPF": "25836914700",
-    "Address": "Rua Maranh\u00E3o, 56 - Centro, S\u00E3o Lu\u00EDs"
+    "Id": "guid-35",
+    "Name": "Carregador Universal para Notebook",
+    "Code": 1035,
+    "Price": 149.90
   },
   {
-    "Id": "n6o7p8q9-r0s1-cdef-0123-456789abcdef",
-    "Name": "Kevin Rocha",
-    "CPF": "14725836900",
-    "Address": "Rua Goi\u00E1s, 78 - Centro, Belo Horizonte"
+    "Id": "guid-36",
+    "Name": "Cooler CPU Cooler Master Hyper 212",
+    "Code": 1036,
+    "Price": 249.90
   },
   {
-    "Id": "o7p8q9r0-s1t2-def0-1234-56789abcdef0",
-    "Name": "Laura Nunes",
-    "CPF": "96385274100",
-    "Address": "Av. Paulista, 300 - Bela Vista, S\u00E3o Paulo"
+    "Id": "guid-37",
+    "Name": "Pasta Térmica Arctic MX-4",
+    "Code": 1037,
+    "Price": 79.90
   },
   {
-    "Id": "p8q9r0s1-t2u3-ef01-2345-6789abcdef01",
-    "Name": "Marcelo Dias",
-    "CPF": "85296325800",
-    "Address": "Rua Paran\u00E1, 67 - Centro, Porto Alegre"
+    "Id": "guid-38",
+    "Name": "Estabilizador SMS 1000VA",
+    "Code": 1038,
+    "Price": 399.00
   },
   {
-    "Id": "q9r0s1t2-u3v4-f012-3456-789abcdef012",
-    "Name": "Nat\u00E1lia Rocha",
-    "CPF": "74136985200",
-    "Address": "Av. Sete de Setembro, 400 - Centro, Recife"
+    "Id": "guid-39",
+    "Name": "Nobreak APC 1500VA",
+    "Code": 1039,
+    "Price": 1899.00
   },
   {
-    "Id": "r0s1t2u3-v4w5-0123-4567-89abcdef0123",
-    "Name": "Ot\u00E1vio Lima",
-    "CPF": "36985214700",
-    "Address": "Rua Amazonas, 101 - Centro, Belo Horizonte"
-  },
-  {
-    "Id": "s1t2u3v4-w5x6-1234-5678-9abcdef01234",
-    "Name": "Patr\u00EDcia Santos",
-    "CPF": "25814736900",
-    "Address": "Av. Brasil, 150 - Centro, Salvador"
-  },
-  {
-    "Id": "t2u3v4w5-x6y7-3456-789a-bcdef0123456",
-    "Name": "Rafael Gomes",
-    "CPF": "14796385200",
-    "Address": "Rua Bahia, 12 - Centro, S\u00E3o Paulo"
-  },
-  {
-    "Id": "u3v4w5x6-y7z8-5678-9abc-def012345678",
-    "Name": "S\u00EDlvia Carvalho",
-    "CPF": "96325814700",
-    "Address": "Av. Atl\u00E2ntica, 300 - Copacabana, Rio de Janeiro"
-  },
-  {
-    "Id": "v4w5x6y7-z8a9-789a-bcde-f0123456789a",
-    "Name": "Tiago Martins",
-    "CPF": "85274125800",
-    "Address": "Rua Pernambuco, 78 - Boa Viagem, Recife"
-  },
-  {
-    "Id": "w5x6y7z8-a9b0-9abc-def0-123456789abc",
-    "Name": "Maria",
-    "CPF": "74185214700",
-    "Address": "Rua Cear\u00E1, 23 - Centro, Fortaleza"
-  },
-  {
-    "Id": "x6y7z8a9-b0c1-abcd-ef01-23456789abcd",
-    "Name": "William Rocha",
-    "CPF": "36974125800",
-    "Address": "Rua Maranh\u00E3o, 45 - Centro, S\u00E3o Lu\u00EDs"
-  },
-  {
-    "Id": "y7z8a9b0-c1d2-bcde-f012-3456789abcde",
-    "Name": "Yara Alves",
-    "CPF": "25896314700",
-    "Address": "Rua Goi\u00E1s, 56 - Centro, Belo Horizonte"
-  },
-  {
-    "Id": "z8a9b0c1-d2e3-cdef-0123-456789abcdef",
-    "Name": "Zeno Fernandes",
-    "CPF": "14785274100",
-    "Address": "Av. Paulista, 400 - Bela Vista, S\u00E3o Paulo"
+    "Id": "guid-40",
+    "Name": "Projetor Epson PowerLite X39",
+    "Code": 1040,
+    "Price": 2999.00
   }
 ]

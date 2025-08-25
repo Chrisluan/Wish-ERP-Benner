@@ -58,22 +58,33 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\OrderBox.cs" />
     <Compile Include="Services\OrdersServices.cs" />
     <Compile Include="Services\ClientServices.cs" />
     <Compile Include="Services\DataManager.cs" />
     <Compile Include="Services\JsonStorage.cs" />
     <Compile Include="ViewModels\ClientsViewModel.cs" />
+    <Compile Include="ViewModels\OrdersViewModel.cs" />
     <Compile Include="Views\ClientsView.xaml.cs">
       <DependentUpon>ClientsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Components\ClientCard.xaml.cs">
       <DependentUpon>ClientCard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Components\ClientOrdersViewer.xaml.cs">
+      <DependentUpon>ClientOrdersViewer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Modals\Clients\CreateClientModal.xaml.cs">
       <DependentUpon>CreateClientModal.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Modals\Clients\EditClientModal.xaml.cs">
       <DependentUpon>EditClientModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modals\Orders\CreateOrderModal.xaml.cs">
+      <DependentUpon>CreateOrderModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Modals\Orders\EditOrderModal.xaml.cs">
+      <DependentUpon>EditOrderModal.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\OrderView.xaml.cs">
       <DependentUpon>OrderView.xaml</DependentUpon>
@@ -101,6 +112,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Components\ClientOrdersViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Modals\Clients\CreateClientModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -108,6 +123,14 @@
     <Page Include="Views\Modals\Clients\EditClientModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Modals\Orders\CreateOrderModal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Modals\Orders\EditOrderModal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\OrderView.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -139,6 +162,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="bin\Debug\Data\Clients.json" />
     <None Include="Data\Clients.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

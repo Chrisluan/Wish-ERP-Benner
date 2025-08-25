@@ -29,22 +29,33 @@
                 <Button Padding="5" IsEnabled="False" Click="DeleteClient" x:Name="DeleteClientButton" Content="Deletar"  Margin="10,0,0,0"/>
 
                 <Button Padding="5" IsEnabled="True" Click="CreateClient" Margin="10,0,0,0" Content="Novo" DockPanel.Dock="Right"/>
+                <Button Padding="5" IsEnabled="False" x:Name="EditClientButton" Click="EditClient" Margin="10,0,0,0" Content="Editar" DockPanel.Dock="Right"/>
 
             </DockPanel>
 
         </Grid>
-           
 
-        <ListView Margin="0,5,0,0" SelectionMode="Extended" SelectionChanged="HandleSelectionList" Background="Transparent" Grid.Row="1" Name="ClientsList" MouseDoubleClick="OpenClient" ItemsSource="{Binding FilteredClientList}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="50"/>
-                    <GridViewColumn Header="CPF" DisplayMemberBinding="{Binding CPF}" Width="200"/>
-                    <GridViewColumn Header="Nome" DisplayMemberBinding="{Binding Name}" Width="200"/>
-                    <GridViewColumn Header="Endereço" DisplayMemberBinding="{Binding Address}" Width="200"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            
+            <ListView Margin="0,5,0,0" SelectionMode="Extended" SelectionChanged="HandleSelectionList" Background="Transparent" Grid.Row="0" Name="ClientsList" ItemsSource="{Binding FilteredClientList}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="50"/>
+                        <GridViewColumn Header="CPF" DisplayMemberBinding="{Binding CPF}" Width="200"/>
+                        <GridViewColumn Header="Nome" DisplayMemberBinding="{Binding Name}" Width="200"/>
+                        <GridViewColumn Header="Endereço" DisplayMemberBinding="{Binding Address}" Width="200"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <ContentControl Grid.Row="1" x:Name="SelectedClientViewer"></ContentControl>
+            
+        </Grid>
     </Grid>
 
 </UserControl>

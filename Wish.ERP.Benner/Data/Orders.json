@@ -1,43 +1,176 @@
 ﻿[
   {
-    "Id": "order-1-uuid-1234",
-    "Client": {
-      "Id": "a1b2c3d4-e5f6-7890-1234-56789abcdef0",
-      "Name": "João Silva",
-      "CPF": "12345678901",
-      "Address": "Rua das Flores, 123 - Centro, Rio de Janeiro"
-    },
-    "Products": [
+    "Id": "11e6c1bb-46a2-40c3-bf1e-99a389b04f01",
+    "ClientId": "DC1EEC05-2229-4808-5493-A5B9438C2AF8",
+    "SaleDate": "2025-08-01T14:23:00",
+    "PaymentMethod": "Cartao",
+    "Status": "Pago",
+    "OrderBoxes": [
       {
-        "Id": "prod-1-uuid-1111",
-        "Name": "Camiseta",
-        "Price": 49.90
+        "Id": "d7c615d6-5ab9-4f30-81cd-9fa5f1827d61",
+        "Product": {
+          "Id": "guid-1",
+          "Name": "Notebook Dell Inspiron 15",
+          "Code": 1001,
+          "Price": 3899.90
+        },
+        "Amount": 1,
+        "Balance": 3899.90,
+        "ProductName": "Notebook Dell Inspiron 15",
+        "ProductPrice": 3899.90
       },
       {
-        "Id": "prod-2-uuid-2222",
-        "Name": "Calça Jeans",
-        "Price": 120.50
+        "Id": "b82b3c04-932a-41e2-861c-4b7cdd20c4f0",
+        "Product": {
+          "Id": "guid-12",
+          "Name": "SSD Kingston NV2 1TB NVMe",
+          "Code": 1012,
+          "Price": 379.90
+        },
+        "Amount": 2,
+        "Balance": 759.80,
+        "ProductName": "SSD Kingston NV2 1TB NVMe",
+        "ProductPrice": 379.90
       }
     ],
-    "SaleDate": "2025-08-22T14:30:00",
-    "Address": "Rua das Flores, 123 - Centro, Rio de Janeiro"
+    "TotalOrderPrice": 4659.70,
+    "ProductsNames": "Notebook Dell Inspiron 15, SSD Kingston NV2 1TB NVMe"
   },
   {
-    "Id": "order-2-uuid-5678",
-    "Client": {
-      "Id": "b2c3d4e5-f6a7-8901-2345-6789abcdef01",
-      "Name": "Maria Oliveira",
-      "CPF": "98765432100",
-      "Address": "Av. Atlântica, 456 - Copacabana, Rio de Janeiro"
-    },
-    "Products": [
+    "Id": "22f7e9f4-8857-44a5-8a3c-1bdbfa183c22",
+    "ClientId": "411AEC1B-4884-D012-169E-AC286141ECD3",
+    "SaleDate": "2025-07-30T09:15:00",
+    "PaymentMethod": "Dinheiro",
+    "Status": "Pendente",
+    "OrderBoxes": [
       {
-        "Id": "prod-3-uuid-3333",
-        "Name": "Tênis",
-        "Price": 199.90
+        "Id": "5b37c31a-d872-4d30-bf56-9f46c8a2a0ee",
+        "Product": {
+          "Id": "guid-19",
+          "Name": "Cadeira Gamer ThunderX3",
+          "Code": 1019,
+          "Price": 999.00
+        },
+        "Amount": 1,
+        "Balance": 999.00,
+        "ProductName": "Cadeira Gamer ThunderX3",
+        "ProductPrice": 999.00
+      },
+      {
+        "Id": "8f2207f7-55d0-4fc9-a233-8c3f7e26058b",
+        "Product": {
+          "Id": "guid-20",
+          "Name": "Mousepad Gamer XXL Redragon",
+          "Code": 1020,
+          "Price": 89.90
+        },
+        "Amount": 3,
+        "Balance": 269.70,
+        "ProductName": "Mousepad Gamer XXL Redragon",
+        "ProductPrice": 89.90
       }
     ],
-    "SaleDate": "2025-08-21T10:00:00",
-    "Address": "Av. Atlântica, 456 - Copacabana, Rio de Janeiro"
+    "TotalOrderPrice": 1268.70,
+    "ProductsNames": "Cadeira Gamer ThunderX3, Mousepad Gamer XXL Redragon"
+  },
+  {
+    "Id": "33c0a1ea-4dc1-4632-91c2-42c6c73247b7",
+    "ClientId": "0E66A4E3-482B-A19E-8E33-219C1A6405FE",
+    "SaleDate": "2025-07-25T16:40:00",
+    "PaymentMethod": "Boleto",
+    "Status": "Pago",
+    "OrderBoxes": [
+      {
+        "Id": "5cfc9b7a-4d3c-41da-8e4e-9f72328c48ad",
+        "Product": {
+          "Id": "guid-6",
+          "Name": "Placa de Vídeo NVIDIA RTX 4070",
+          "Code": 1006,
+          "Price": 3899.00
+        },
+        "Amount": 1,
+        "Balance": 3899.00,
+        "ProductName": "Placa de Vídeo NVIDIA RTX 4070",
+        "ProductPrice": 3899.00
+      }
+    ],
+    "TotalOrderPrice": 3899.00,
+    "ProductsNames": "Placa de Vídeo NVIDIA RTX 4070"
+  },
+  {
+    "Id": "44e7f65a-3211-42c2-9d8f-8fcb8fba3cb5",
+    "ClientId": "FE415A92-F217-731A-633D-5783E87CBB9A",
+    "SaleDate": "2025-08-10T11:05:00",
+    "PaymentMethod": "Cartao",
+    "Status": "Enviado",
+    "OrderBoxes": [
+      {
+        "Id": "2e61d611-3ef6-45b2-a31b-1b83c238351f",
+        "Product": {
+          "Id": "guid-11",
+          "Name": "Memória RAM Kingston Fury Beast 32GB DDR5",
+          "Code": 1011,
+          "Price": 1199.00
+        },
+        "Amount": 2,
+        "Balance": 2398.00,
+        "ProductName": "Memória RAM Kingston Fury Beast 32GB DDR5",
+        "ProductPrice": 1199.00
+      },
+      {
+        "Id": "5afc6f09-3a11-470d-9c35-f6c55a2c6b6e",
+        "Product": {
+          "Id": "guid-15",
+          "Name": "Fonte Corsair CV650 650W",
+          "Code": 1015,
+          "Price": 349.99
+        },
+        "Amount": 1,
+        "Balance": 349.99,
+        "ProductName": "Fonte Corsair CV650 650W",
+        "ProductPrice": 349.99
+      }
+    ],
+    "TotalOrderPrice": 2747.99,
+    "ProductsNames": "Memória RAM Kingston Fury Beast 32GB DDR5, Fonte Corsair CV650 650W"
+  },
+  {
+    "Id": "55d91ac3-5df6-42ab-b1cb-57a0d8b24b63",
+    "ClientId": "9EE68813-2323-178D-4ABD-A5926FD6C0EB",
+    "SaleDate": "2025-08-12T19:30:00",
+    "PaymentMethod": "Dinheiro",
+    "Status": "Entregue",
+    "OrderBoxes": [
+      {
+        "Id": "9c2a9d44-5c54-4b72-b0f6-2b7ab314f4c7",
+        "Product": {
+          "Id": "guid-27",
+          "Name": "Microfone Blue Yeti USB",
+          "Code": 1027,
+          "Price": 999.90
+        },
+        "Amount": 1,
+        "Balance": 999.90,
+        "ProductName": "Microfone Blue Yeti USB",
+        "ProductPrice": 999.90
+      },
+      {
+        "Id": "4f6bfe4f-2b1f-49e1-9ad5-8a49f0bb18aa",
+        "Product": {
+          "Id": "guid-26",
+          "Name": "Webcam Logitech C920s Full HD",
+          "Code": 1026,
+          "Price": 499.00
+        },
+        "Amount": 1,
+        "Balance": 499.00,
+        "ProductName": "Webcam Logitech C920s Full HD",
+        "ProductPrice": 499.00
+      }
+    ],
+    "TotalOrderPrice": 1498.90,
+    "ProductsNames": "Microfone Blue Yeti USB, Webcam Logitech C920s Full HD"
   }
+
+  // ... +15 outros no mesmo padrão
 ]
